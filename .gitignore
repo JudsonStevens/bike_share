@@ -24,3 +24,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+db/data/station.csv
+db/data/status.csv
+db/data/trip.csv
+db/data/weather.csv
