@@ -21,6 +21,9 @@
 
 /public/assets
 .byebug_history
+/db/data/station.csv
+/db/data/status.csv
+/db/data/trip.csv
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
