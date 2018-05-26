@@ -49,7 +49,9 @@ group :development, :test do
   gem 'foundation-rails'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
+  gem 'ffaker'
+
 end
 
 group :development do
