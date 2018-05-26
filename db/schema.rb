@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2018_05_25_200340) do
   enable_extension "plpgsql"
 
   create_table "item_orders", force: :cascade do |t|
-    t.bigint "items_id"
-    t.bigint "orders_id"
-    t.index ["items_id"], name: "index_item_orders_on_items_id"
-    t.index ["orders_id"], name: "index_item_orders_on_orders_id"
+    t.bigint "item_id"
+    t.bigint "order_id"
+    t.index ["item_id"], name: "index_item_orders_on_item_id"
+    t.index ["order_id"], name: "index_item_orders_on_order_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2018_05_25_200340) do
   create_table "orders", force: :cascade do |t|
     t.string "status"
     t.integer "quantity"
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_orders_on_users_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2018_05_25_200340) do
     t.index ["username"], name: "index_users_on_username"
   end
 
-  add_foreign_key "item_orders", "items", column: "items_id"
-  add_foreign_key "item_orders", "orders", column: "orders_id"
-  add_foreign_key "orders", "users", column: "users_id"
+  add_foreign_key "item_orders", "items"
+  add_foreign_key "item_orders", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "trips", "stations", column: "end_station_id"
   add_foreign_key "trips", "stations", column: "start_station_id"
 end
