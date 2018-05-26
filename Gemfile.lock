@@ -48,7 +48,6 @@ GEM
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     autoprefixer-rails (8.5.1)
       execjs
     bcrypt (3.1.12)
