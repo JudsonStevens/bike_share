@@ -1,7 +1,7 @@
 require 'ffaker'
 
 FactoryBot.define do
-  factory :trips do
+  factory :trip do
     sequence(:duration) { |n| "Duration: #{n}" }
     sequence(:start_date) { |n| "Start Date: #{n}" }
     sequence(:end_date) { |n| "End Date: #{n}" }
