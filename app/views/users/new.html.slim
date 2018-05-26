@@ -1,0 +1,36 @@
+= provide(:title, 'Create User')
+form class="needs-validation"
+  div class="container-fluid" style="width: 85%;"
+    = form_with(model: @user, local: true) do |form|
+      div class="form-row"
+
+        div class="col-md-4 mb-3"
+          = form.label :first_name
+          = form.text_field :first_name, class: "form-control", placeholder: "First Name", id: "validationDefault01", required: true
+          required
+
+        div class="col-md-4 mb-3"
+          = form.label :last_name
+          = form.text_field :last_name, class: "form-control", placeholder: "Last Name", id: "validationDefault02", required: true
+
+        div class="col-md-4 mb-3"
+          = form.label :username
+          = form.email_field :username, class: "form-control", placeholder: "Username", id: "validationDefaultUsername", required: true
+      
+      div class="form-row"
+        div style="width: 100%;"
+          = form.label :address
+          = form.text_field :address, class: "form-control", placeholder: "Full address with city/state", id: "validationDefaultAddress", required: true
+
+      div class="form-row" style="justify-content: center; margin-top: 15px;"
+        div class="col-md-4 mb-3"
+          = form.label :password
+          = form.password_field :password, class: "form-control", placeholder: "Password", id: "validationDefaultPassword", required: true
+
+        div class="col-md-4 mb-3"
+          = form.label :password_confirmation
+          = form.password_field :password_confirmation, class: "form-control", placeholder: "Password", id: "validationDefaultPasswordConfirmation", required: true
+
+      div class="form-row" style="justify-content: center; margin-top: 35px;"
+        div class="actions"
+          = form.submit
