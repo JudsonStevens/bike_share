@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :stations
 
+
   resources :trips, only: [:show, :index]
 
   namespace :admin do
