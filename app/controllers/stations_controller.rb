@@ -5,5 +5,7 @@ class StationsController < ApplicationController
   end
 
   def show
-  end 
+    @station = Station.find(params[:id])
+    redirect_to "/#{@station.name}"
+  end
 end

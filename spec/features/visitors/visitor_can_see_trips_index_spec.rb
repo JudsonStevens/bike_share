@@ -4,27 +4,10 @@ describe 'Visitor' do
   context 'they visit a trips index page' do
     xit 'should show the first 30 trips with all attributes' do
 
-      trips = create_list(:trip, 30)
+      trip = Trip.create(duration: 23, start_date: '2014-09-21T16:39:57-8:00', end_date: '2014-09-21T16:55:57-8:00', end_station_id: , start_station_id: , bike_id: 4, subscription_type: 'gold', zip_code: 08830)
 
-      visit station_path(station)
-      expect(page).to have_content(trips[29])
-      expect(page).to have_content(trips.first.duration)
-      expect(page).to have_content(trips.first.start_date)
-      expect(page).to have_content(trips.first.end_date)
-      expect(page).to have_content(trips.first.end_station_id)
-      expect(page).to have_content(trips.first.start_station_id)
-      expect(page).to have_content(trips.first.bike_id)
-      expect(page).to have_content(trips.first.subscription_type)
-      expect(page).to have_content(trips.first.zip_code)
 
-      expect(page).to have_content(trips.last.duration)
-      expect(page).to have_content(trips.last.start_date)
-      expect(page).to have_content(trips.last.end_date)
-      expect(page).to have_content(trips.last.end_station_id)
-      expect(page).to have_content(trips.last.start_station_id)
-      expect(page).to have_content(trips.last.bike_id)
-      expect(page).to have_content(trips.last.subscription_type)
-      expect(page).to have_content(trips.last.zip_code)
+      
     end
     it 'should have a button to show more trips' do
 

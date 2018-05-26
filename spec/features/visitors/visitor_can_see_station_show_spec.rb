@@ -5,14 +5,13 @@ describe 'Visitor' do
     it 'should show the ' do
       station = Station.create(name: 'City Park North', dock_count: 3, city: 'Denver', installation_date: '2014-09-21T16:39:57-8:00')
 
-
-
       visit station_path(station)
 
-
-
-
-
+      expect(current_path).to eq("/#{station.name}")
+      expect(page).to have_content(station.name)
+      expect(page).to have_content(station.dock_count)
+      expect(page).to have_content(station.city)
+      expect(page).to have_content(station.installation_date)
     end
   end
 end
