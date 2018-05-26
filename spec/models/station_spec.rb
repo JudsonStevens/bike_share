@@ -9,6 +9,7 @@ describe Station, type: :model do
   end
 
   describe 'Relationships' do
-    it { should have_many(:trips) }
+    it { should have_many(:start_stations).class_name("Trip") }
+    it { should have_many(:end_stations).class_name("Trip") }
   end
 end

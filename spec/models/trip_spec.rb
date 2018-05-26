@@ -13,7 +13,7 @@ describe Trip, type: :model do
   end
 
   describe 'Relationships' do
-    it { should belong_to(:station) }
-    # it { should belong_to(:start_station) }
+    it { should belong_to(:end_station).class_name("Station") }
+    it { should belong_to(:end_station).class_name("Station") }
   end
 end
