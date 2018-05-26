@@ -1,24 +1,23 @@
 nav class="navbar navbar-default"
-  div class="container-fluid"
+  div class="container-fluid" id="navbar-container-1"
     div class="navbar-header"
-      = link_to 'Bike Share', root_path, class: "navbar-brand"
-    
-    div class="collapse navbar-collapse" id="bs-exmple-navbar-collapse-1"
-      ul class="nav navbar-nav"
-        li class="#{current_class?(root_path) || current_class?(new_user_path)}"
-          = link_to 'Home', root_path
-        - if current_user
-          li class="#{current_class?(user_path(@user))}"
-            = link_to 'Profile', user_path(@user)
-        li class="#{current_class?(trips_path) || current_class?(trip_path(@trip))}"
-          = link_to 'Trips', trips_path
-        li class="#{current_class?(stations_path) || current_class?(station_path(@station))}"
-          = link_to 'Stations', stations_path
-        li class="#{current_class?(bike_shops_path) || current_class?(bike_shop_path(@bike_shop))}"
-          = link_to 'Bike Shop', bike_shops_path
-      ul class="nav navbar-nav navbar-right"
-        li
-          - if current_user.nil? 
-            = link_to 'Login', login_path
-          - else
-            = link_to 'Logout', logout_path, method: :delete
+      = link_to 'Bike Share', root_path, class: "navbar-brand pull-left"
+      
+    ul class="nav navbar-nav"
+      li class="#{current_class?(root_path) || current_class?(new_user_path)}"
+        = link_to 'Home', root_path
+      - if current_user
+        li class="#{current_class?(user_path(@user))}"
+          = link_to 'Profile', user_path(@user)
+      / li class="#{current_class?(trips_path) || current_class?(trip_path(@trip))}"
+      /   = link_to 'Trips', trips_path
+      / li class="#{current_class?(stations_path) || current_class?(station_path(@station))}"
+      /   = link_to 'Stations', stations_path
+      / li class="#{current_class?(bike_shops_path) || current_class?(bike_shop_path(@bike_shop))}"
+      /   = link_to 'Bike Shop', bike_shops_path
+    ul class="nav navbar-nav navbar-right"
+      li
+        - if current_user.nil? 
+          = link_to 'Login', login_path
+        - else
+          = link_to 'Logout', logout_path, method: :delete
