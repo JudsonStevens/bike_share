@@ -8,16 +8,17 @@ describe 'Visitor' do
       username = 'Jo@gmail.com'
       address = '1223 Oakview Drive, CO'
       password = 'longpassword111'
-      
+
       visit(root_path)
 
       click_on('Log In')
-      fill_in(:user_username, with: username)
-      fill_in(:user_first_name, with: first_name)
-      fill_in(:user_last_name, with: last_name)
-      fill_in(:user_address, with: address)
-      fill_in(:user_password, with: password)
-      fill_in(:user_password_confirmation, with: password)
+      click_on('Click here to create an account')
+      fill_in('user[username]', with: username)
+      fill_in('user[first_name]', with: first_name)
+      fill_in('user[last_name]', with: last_name)
+      fill_in('user[address]', with: address)
+      fill_in('user[password]', with: password)
+      fill_in('user[password_confirmation]', with: password)
 
       click_on('Create Account')
 

@@ -16,8 +16,13 @@ nav class="navbar navbar-default"
       / li class="#{current_class?(bike_shops_path) || current_class?(bike_shop_path(@bike_shop))}"
       /   = link_to 'Bike Shop', bike_shops_path
     ul class="nav navbar-nav navbar-right"
-      li
-        - if current_user.nil? 
-          = link_to 'Log In', login_path
-        - else
+      - if current_user
+        li
+          p 
+            ' Logged in as
+            = @user.username
+        li
           = link_to 'Log Out', logout_path, method: :delete
+      - else
+        li
+          = link_to 'Log In', login_path
