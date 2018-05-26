@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resources :trips, only: [:show]
   end
 
+  resources :items, only: [:show]
+
 end

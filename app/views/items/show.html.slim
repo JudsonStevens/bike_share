@@ -1,0 +1,12 @@
+div 
+  h1 = @item.title
+  - if @item.is_retired? == true
+    p Accesory Retired
+  - else
+  p
+    'Price:
+    = @item.price.to_f
+  p
+    'Description:
+    = @item.description
+  img class="item-image" src="=@item.image"/
