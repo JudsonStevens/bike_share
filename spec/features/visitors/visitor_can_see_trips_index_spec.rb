@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor' do
   context 'they visit a trips index page' do
-    it 'should show the first 30 trips with all attributes' do
+    xit 'should show the first 30 trips with all attributes' do
 
       trips = create_list(:trip, 30)
 
