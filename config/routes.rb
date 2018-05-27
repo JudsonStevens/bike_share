@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index]
 
   resources :stations, shallow: true do
-    resources :trips, only: [:show]
+    resources :trips, only: [:show, :index]
   end
 
 end
