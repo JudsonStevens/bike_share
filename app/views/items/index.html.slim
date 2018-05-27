@@ -1,0 +1,22 @@
+div class="container-fluid"
+  div class="row"
+    - @items.each do |item|
+      div class="col-md-3" style="text-align: center;"
+        ul class="item-index-list" style="list-style-type: none;"
+          li
+            = item.title
+          li
+            = image_tag("#{item.image}")
+          li
+            = item.description
+          li
+            '$
+            = '%.2f' % item.price
+          li 
+            = form_for(:cart, url: bike_shop_path, method: :patch) do |f|
+              p
+                = f.label :quantity, style: 'display:block;align-text:center;'
+              p
+                = f.select :quantity, options_for_select(0..25), style: 'margin:auto;'
+
+              = f.submit 'Add to Cart'
