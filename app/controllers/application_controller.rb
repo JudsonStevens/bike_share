@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_admin?
+    current_user && current_user.admin?
+  end
+
   def log_in(user)
     session[:user_id] = user.id
   end
