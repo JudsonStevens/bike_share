@@ -42,7 +42,7 @@ describe 'Visit trip show page' do
 
       visit trip_path(trip)
 
-      expect(page).to have_button('Edit Trip')
+      expect(page).to have_link('Edit Trip')
     end
   end
 
