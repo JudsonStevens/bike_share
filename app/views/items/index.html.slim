@@ -1,8 +1,3 @@
-div class="container"
-  - flash.each do |key, value|
-    div class="alert alert"
-      = value
-
 div class="container-fluid"
   div class="row"
     - @items.each do |item|
@@ -26,3 +21,7 @@ div class="container-fluid"
                 = f.number_field :quantity, options = {max: 25, min: 0}
 
               = f.submit 'Add to Cart'
+          li
+            = form_for(:item, url: bike_shop_path, method: :delete) do |f|
+              = f.hidden_field(:item_id, value: item.id)
+              = f.submit 'Remove Item From Cart'

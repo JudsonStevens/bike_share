@@ -8,15 +8,8 @@ Rails.application.routes.draw do
 
   resources :stations
 
-<<<<<<< HEAD
-  resources :stations, shallow: true do
-    resources :trips, only: [:show]
-  end
-  
-=======
   resources :trips, only: [:show, :index]
 
->>>>>>> finished testing that admin can see edit/delete while user cannot
   namespace :admin do
     resources :stations
     resources :trips
@@ -27,4 +20,5 @@ Rails.application.routes.draw do
 
   get '/cart', to: "cart#index"
   patch '/bike-shop', to: "cart#update"
+  delete '/bike-shop', to: 'cart#destroy'
 end
