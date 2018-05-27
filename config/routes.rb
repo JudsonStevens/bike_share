@@ -11,9 +11,14 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index]
   resources :trips, only: [:show, :index]
 
+<<<<<<< HEAD
   namespace :admin do
     resources :stations
     resources :trips
+=======
+  resources :stations, shallow: true do
+    resources :trips, only: [:show, :index]
+>>>>>>> Implements visitor station show WIP
   end
 
   resources :orders, only: [:new, :create, :show]
