@@ -20,4 +20,5 @@ Rails.application.routes.draw do
 
   get '/cart', to: "cart#index"
   patch '/bike-shop', to: "cart#update"
+  delete '/bike-shop', to: 'cart#destroy'
 end

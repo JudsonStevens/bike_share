@@ -15,5 +15,6 @@ html
     = render 'partials/navbar'
     - flash.each do |message_type, message|
       div class="alert alert-#{message_type}"
-        = message
+        - if message.is_a?(String)
+          = sanitize(message)
     = yield

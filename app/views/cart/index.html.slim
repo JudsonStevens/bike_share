@@ -1,10 +1,20 @@
-ul
+ul style="list-style-type:none;"
   - @items.each do |item|
     li
       = item.title
-      = item.price
+    li
+      '$
+      = '%.2f' % item.price
+    li
       = image_tag("#{item.image}")
+    li
       'Quantity -
       = session[:shopping_cart][item.id.to_s]
+    li
       'Subtotal - $
-      = '%.2f' % (item.price * session[:shopping_cart][item.id.to_s])
+      = '%.2f' % (item.price * session[:shopping_cart][item.id.to_s].to_i)
+    li
+      = form_for(:item, url: bike_shop_path, method: :delete) do |f|
+        = f.hidden_field(:item_id, value: item.id)
+        = f.submit 'Remove Item From Cart'
+

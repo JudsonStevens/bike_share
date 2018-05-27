@@ -26,6 +26,6 @@ h1
     'Zip Code:
     = @trip.zip_code
 
-  - if current_user && current_user.admin?
+  - if current_admin?
     = button_to 'Delete Trip', admin_trip_path(@trip), method: 'delete'
     = button_to 'Edit Trip', edit_admin_trip_path(@trip), method: 'edit'
