@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :build_cart
+<<<<<<< HEAD
   helper_method :current_user, :logged_in?, :authorize, :log_in, :current_admin?, :log_out
+=======
+  helper_method :current_user, :logged_in?, :current_admin?, :authorize, :log_in
+>>>>>>> fixed inital merge conflicts
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
