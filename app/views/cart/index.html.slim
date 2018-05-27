@@ -1,0 +1,10 @@
+ul
+  - @items.each do |item|
+    li
+      = item.title
+      = item.price
+      = image_tag("#{item.image}")
+      'Quantity -
+      = session[:temporary_shopping_cart][item.id.to_s]
+      'Subtotal - $
+      = '%.2f' % (item.price * session[:temporary_shopping_cart][item.id.to_s])
