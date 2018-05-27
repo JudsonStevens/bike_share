@@ -8,7 +8,7 @@ describe 'Visitor' do
       item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      page.set_rack_session(temporary_shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 10 } )
+      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 10 } )
       visit(cart_path)
 
       expect(page).to have_content(item1.title)
@@ -39,7 +39,7 @@ describe 'Visitor' do
       item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      page.set_rack_session(temporary_shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 10 } )
+      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 10 } )
       visit(cart_path)
 
       click_on('Log In')

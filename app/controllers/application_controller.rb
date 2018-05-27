@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :build_temporary_cart
-  helper_method :current_user, :logged_in?, :current_admin?, :authorize, :log_in
+  before_action :build_cart
+  helper_method :current_user, :logged_in?, :admin?, :authorize, :log_in
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
-  def build_temporary_cart
-    if session[:temporary_shopping_cart].nil?
-      session[:temporary_shopping_cart] = {}
+  def build_cart
+    if session[:shopping_cart].nil?
+      session[:shopping_cart] = {}
     end
   end
 end
