@@ -57,12 +57,8 @@ describe 'Visit trip show page' do
 
       visit trip_path(trip)
 
-<<<<<<< HEAD
-      expect(current_path).to eq trips_path
-=======
       expect(page).to_not have_button('Edit Trip')
       expect(page).to_not have_button('Delete Trip')
->>>>>>> finished testing that admin can see edit/delete while user cannot
     end
   end
 end

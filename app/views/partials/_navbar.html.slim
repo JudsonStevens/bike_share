@@ -22,14 +22,9 @@ nav class="navbar navbar-default"
           = session[:shopping_cart].values.sum  
       - if current_user
         li
-<<<<<<< HEAD
-          ' Logged in as
-          = current_user.username
-=======
           p
             ' Logged in as
             = current_user.username
->>>>>>> tested admin sees a trip show page, fixed errors for @ user in nav bar
         li
           = link_to 'Log Out', logout_path, method: :delete
       - else
