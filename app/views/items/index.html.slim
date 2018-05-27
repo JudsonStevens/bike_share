@@ -12,5 +12,11 @@ div class="container-fluid"
           li
             '$
             = '%.2f' % item.price
-          li
-            = link_to 'Add to Cart', bike_shop_path, method: :patch
+          li 
+            = form_for(:cart, url: bike_shop_path, method: :patch) do |f|
+              p
+                = f.label :quantity, style: 'display:block;align-text:center;'
+              p
+                = f.select :quantity, options_for_select(0..25), style: 'margin:auto;'
+
+              = f.submit 'Add to Cart'

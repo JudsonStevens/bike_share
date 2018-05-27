@@ -9,7 +9,7 @@ describe 'Visitor' do
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
       visit(bike_shop_path)
-
+      
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item2.description)
       expect(page).to have_content(item3.description)
