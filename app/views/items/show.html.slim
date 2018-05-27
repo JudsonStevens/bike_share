@@ -9,4 +9,16 @@ div
   p
     'Description:
     = @item.description
-  img class="item-image" src="=@item.image"/
+  p
+    = image_tag("#{@item.image}")
+    = form_for(:cart, url: bike_shop_path, method: :patch) do |f|
+      = f.hidden_field(:item_id, value: @item.id)
+      p
+        = f.label :quantity
+      p
+        = f.number_field :quantity, options = {max: 25, min: 0}
+
+      = f.submit 'Add to Cart'
+  p
+    'You can add a maximum of 25 items to your cart at one time.
+

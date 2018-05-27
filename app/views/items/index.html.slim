@@ -1,10 +1,15 @@
+div class="container"
+  - flash.each do |key, value|
+    div class="alert alert"
+      = value
+
 div class="container-fluid"
   div class="row"
     - @items.each do |item|
       div class="col-md-3" style="text-align: center;"
         ul class="item-index-list" style="list-style-type: none;"
           li
-            = item.title
+            = link_to item.title, item_path(item.id)
           li
             = image_tag("#{item.image}")
           li
@@ -13,10 +18,11 @@ div class="container-fluid"
             '$
             = '%.2f' % item.price
           li 
-            = form_for(:cart, url: bike_shop_path, method: :patch) do |f|
+            = form_for(:item, url: bike_shop_path, method: :patch) do |f|
+              = f.hidden_field(:item_id, value: item.id)
               p
                 = f.label :quantity, style: 'display:block;align-text:center;'
               p
-                = f.select :quantity, options_for_select(0..25), style: 'margin:auto;'
+                = f.number_field :quantity, options = {max: 25, min: 0}
 
               = f.submit 'Add to Cart'

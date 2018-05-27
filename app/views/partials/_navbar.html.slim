@@ -19,7 +19,7 @@ nav class="navbar navbar-default"
       li
         = link_to cart_path do
           ' Shopping Cart -
-          = session[:temporary_shopping_cart].values.sum  
+          = session[:shopping_cart].values.sum  
       - if current_user
         li
 <<<<<<< HEAD
