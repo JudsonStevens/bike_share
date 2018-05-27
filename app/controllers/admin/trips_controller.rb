@@ -8,6 +8,7 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def update
+    require 'pry'; binding.pry
   end
 
   def destroy
