@@ -25,3 +25,6 @@ h1
   p
     'Zip Code:
     = @trip.zip_code
+
+  -if current_user == admin
+   = button_to 'Delete Trip', admin_trip_path(@trip), method: 'delete'

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :stations, shallow: true do
     resources :trips, only: [:show]
   end
+  
+  namespace :admin do
+    resources :trips
+  end
 
   get '/bike-shop', to: 'items#index'
   resources :items, only: [:show]
