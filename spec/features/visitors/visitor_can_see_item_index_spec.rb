@@ -30,5 +30,21 @@ describe 'Visitor' do
       expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
       expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
     end
+
+    it 'and click on add to cart for an item, see a flash message, and see the cart count updated' do
+      item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
+      item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
+      item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
+      item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
+
+      visit(bike_shop_path)
+      within(first('form')) do
+        fill_in('item[quantity]', with: 2)
+      end
+      first('form').click_button('Add to Cart', match: :first)
+
+      expect(page).to have_content("You have added #{item1.title} to your cart!")
+      expect(page).to have_content('Shopping Cart - 2')
+    end
   end
 end
