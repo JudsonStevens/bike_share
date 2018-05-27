@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :trips, only: [:show]
   end
 
-  resources :items, only: [:index, :show]
+  get '/bike-shop', to: 'items#index'
+  resources :items, only: [:show]
 
   get '/cart', to: "cart#index"
   patch '/bike-shop', to: "cart#update"

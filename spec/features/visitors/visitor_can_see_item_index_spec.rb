@@ -8,7 +8,7 @@ describe 'Visitor' do
       item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      visit(items_path)
+      visit(bike_shop_path)
 
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item2.description)
@@ -24,3 +24,11 @@ describe 'Visitor' do
       expect(page).to have_content(item2.title)
       expect(page).to have_content(item3.title)
       expect(page).to have_content(item4.title)
+
+      expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
+      expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
+      expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
+      expect(page).to have_css("img[src*='http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg']")
+    end
+  end
+end

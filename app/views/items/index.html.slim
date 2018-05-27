@@ -1,0 +1,16 @@
+div class="container-fluid"
+  div class="row"
+    - @items.each do |item|
+      div class="col-md-3" style="text-align: center;"
+        ul class="item-index-list" style="list-style-type: none;"
+          li
+            = item.title
+          li
+            = image_tag("#{item.image}")
+          li
+            = item.description
+          li
+            '$
+            = '%.2f' % item.price
+          li
+            = link_to 'Add to Cart', bike_shop_path, method: :patch
