@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :build_temporary_cart
   helper_method :current_user, :logged_in?, :admin?, :authorize, :log_in
 
   def current_user
@@ -23,5 +24,11 @@ class ApplicationController < ActionController::Base
 
   def log_in(user)
     session[:user_id] = user.id
+  end
+
+  def build_temporary_cart
+    if session[:temporary_shopping_cart].nil?
+      session[:temporary_shopping_cart] = {}
+    end
   end
 end

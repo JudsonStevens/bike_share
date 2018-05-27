@@ -37,6 +37,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'rack_session_access'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
