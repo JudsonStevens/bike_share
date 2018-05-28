@@ -2,7 +2,6 @@ class CartController < ApplicationController
   def index
     @items = Item.where(id: session[:shopping_cart].keys)
     @order_total = @items.map { |item| item.price * session[:shopping_cart][item.id.to_s].to_i }.sum
-    require 'pry'; binding.pry
   end
 
   def update
