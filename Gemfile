@@ -38,6 +38,8 @@ gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rack_session_access'
+gem 'kaminari'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

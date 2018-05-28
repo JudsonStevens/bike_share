@@ -1,7 +1,9 @@
-# Tried pagination each of these ways using tests and launchy. I couldn't get the trips to print to screen.
-<%= will_paginate @trips %>
 
-<% @trips.each do |trip| -%>
-  <p>Duration: <%= trip.duration %>
-  ...
-<% end -%>
+<% if @trips.count >= 30 %>
+<%= paginate @trips %>
+<% binding.pry %>
+<%= link_to_next_page @trips, 'Next Page' %>
+<% else @trips.each do |trip| %>
+<%= trip.duration %>
+<% end %>
+<% end %>
