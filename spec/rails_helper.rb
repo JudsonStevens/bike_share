@@ -5,6 +5,7 @@ require 'spec_helper'
 require 'support/factory_bot'
 require 'ffaker'
 
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
@@ -25,8 +26,11 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+<<<<<<< HEAD
 >>>>>>> TESTS Trips index WIP
 
+=======
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
 
 ActiveRecord::Migration.maintain_test_schema!
 

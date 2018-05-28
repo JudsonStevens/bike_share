@@ -53,7 +53,10 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem "factory_bot_rails"
   gem 'ffaker'
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
 end
 
 group :development do

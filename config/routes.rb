@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   get '/dashboard', to: "users#show"
 
@@ -11,6 +12,11 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
   root "homepages#index"
+=======
+  get "/:station-name", to: redirect("/%{station-name}")
+  root "homepages#index"
+  resources :users, only: [:new, :create, :show, :index]
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
 
   resources :stations
   resources :users, only: [:new, :create, :show, :index]
@@ -24,7 +30,10 @@ Rails.application.routes.draw do
 =======
   resources :stations, shallow: true do
     resources :trips, only: [:show, :index]
+<<<<<<< HEAD
 >>>>>>> Implements visitor station show WIP
+=======
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
   end
 =======
   resources :stations

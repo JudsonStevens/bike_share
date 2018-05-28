@@ -10,17 +10,23 @@ describe 'Visitor' do
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       visit station_trips_path(station_1)
       save_and_open_page
 =======
       visit trips_path
 
 >>>>>>> 22-visitor-trip-index WIP
+=======
+      visit station_trips_path(station_1)
+      save_and_open_page
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
 
       expect(page).to have_content(trip_1.duration)
       expect(page).to have_content(trip_2.duration)
     end
     it 'should have a button to show more trips' do
+<<<<<<< HEAD
 <<<<<<< HEAD
       station = Station.create(name )
       end
@@ -43,6 +49,9 @@ describe 'Visitor' do
       click_on 'Next'
       expect(page).to have_content('Previous')
 >>>>>>> Implements 22-visitor-trip-index
+=======
+
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
     end
   end
 end
