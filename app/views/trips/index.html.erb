@@ -1,8 +1,28 @@
 
 <% if @trips.count >= 30 %>
+<<<<<<< HEAD
 <%= paginate @trips %>
 <% binding.pry %>
+=======
+
+  <h1>Trips</h1>
+  <hr />
+  <% @trips.each do |trip| %>
+  <h2><%= trip.id %></h2>
+  <h2><%= trip.duration %></h2>
+  <p>
+  <%= trip.bike_id %>
+
+  </p>
+  <% end %>
+  <hr/>
+  <%= paginate @trips%>
+
+
+>>>>>>> 22-visitor-trip-index WIP
 <%= link_to_next_page @trips, 'Next Page' %>
+
+
 <% else @trips.each do |trip| %>
 <%= trip.duration %>
 <% end %>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:show, :index]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   namespace :admin do
     resources :stations
     resources :trips
@@ -20,6 +21,12 @@ Rails.application.routes.draw do
     resources :trips, only: [:show, :index]
 >>>>>>> Implements visitor station show WIP
   end
+=======
+  resources :stations
+  resources :trips, only: [:show, :index]
+
+
+>>>>>>> 22-visitor-trip-index WIP
 
   resources :orders, only: [:new, :create, :show]
 

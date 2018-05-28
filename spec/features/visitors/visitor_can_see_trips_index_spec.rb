@@ -16,8 +16,18 @@ describe 'Visitor' do
       expect(page).to have_content(trip_2.duration)
     end
     it 'should have a button to show more trips' do
+<<<<<<< HEAD
       station = Station.create(name )
       end
+=======
+      station = Station.create(id: 1, name: 'City Park West', dock_count: 5, city: 'Denver', installation_date: '2013-09-21T16:39:57-8:00')
+      built_trips = create_list(:trip, 60)
+
+      visit station_trips_path(station)
+      save_and_open_page
+      expect(page).to have_content('Next Page')
+      expect(pate).to have_content('Previous Page')
+>>>>>>> 22-visitor-trip-index WIP
     end
   end
 end

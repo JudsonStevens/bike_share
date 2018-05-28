@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2018_05_28_172513) do
     t.integer "dock_count"
     t.string "city"
     t.datetime "installation_date"
+    t.string "slug"
+    t.index ["slug"], name: "index_stations_on_slug", unique: true
   end
 
   create_table "trips", force: :cascade do |t|
