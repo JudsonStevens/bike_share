@@ -9,11 +9,10 @@ class Admin::TripsController < Admin::BaseController
 
   def update
     trip = Trip.find(params[:id])
-      if trip.update(trip_params)
-        flash[:success] = "You have updated Trip-#{Trip.find(params[:id]).id}!"
-      end
-
-      redirect_to trip_path(trip)
+    if trip.update(trip_params)
+      flash[:success] = "You have updated Trip-#{Trip.find(params[:id]).id}!"
+    end
+    redirect_to trip_path(trip)
   end
 
   def destroy

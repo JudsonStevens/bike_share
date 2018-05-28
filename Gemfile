@@ -38,8 +38,12 @@ gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rack_session_access'
+<<<<<<< HEAD
 gem 'kaminari'
 
+=======
+gem 'friendly_id'
+>>>>>>> Implementation of issue 13, admin show station, also implements visitor station show
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
