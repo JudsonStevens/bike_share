@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         log_in(@user)
-        format.html { redirect_to user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to dashboard_path(@user), notice: 'User was successfully created.' }
       else
         format.html { render :new }
       end
@@ -16,7 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if current_user
+      # Why is this coming up as format?
+      @user = User.find(params[:format])
+    else
+      redirect_to login_path, notice: 'You must log in to see the dashboard'
+    end
   end
 
   private
