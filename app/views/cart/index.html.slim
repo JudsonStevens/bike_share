@@ -24,3 +24,8 @@ ul style="list-style-type:none;"
         = f.hidden_field(:item_id, value: item.id)
         = f.submit 'Remove Item From Cart'
 
+- if current_user.nil?
+  = link_to 'Check Out', login_path, class: "btn btn-primary btn-lg btn-block"
+- else
+  = link_to 'Check Out', dashboard_path(alert: true), class: "btn btn-primary btn-lg btn-block"
+
