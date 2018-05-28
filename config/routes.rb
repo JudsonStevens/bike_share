@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+<<<<<<< HEAD
+=======
+  get '/dashboard', to: "users#show"
+
+>>>>>>> Fixes routes
   get "/:station-name", to: redirect("/%{station-name}")
 
   get '/dashboard', to: 'users#show'
@@ -26,7 +31,15 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:show, :index]
 
+<<<<<<< HEAD
 >>>>>>> 22-visitor-trip-index WIP
+=======
+  namespace :admin do
+    resources :stations
+    resources :trips
+  end 
+
+>>>>>>> Fixes routes
 
   resources :orders, only: [:new, :create, :show]
 
