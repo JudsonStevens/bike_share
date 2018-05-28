@@ -1,25 +1,4 @@
-<<<<<<< HEAD
-h2
-  ul
-    li
-=======
-<<<<<<< HEAD
-h1 All Stations
 
-div class='station_info'
-    p
-      ' Station:
->>>>>>> f9449570dcf9caf9eea3077b13a1ff51dd33a26d
-      = @station.name
-    li
-      = @station.dock_count
-    li
-      = @station.city
-    li
-      = @station.installation_date
-<<<<<<< HEAD
-=======
-=======
 h2
   ul
     li
@@ -30,12 +9,8 @@ h2
       = @station.city
     li
       = @station.installation_date
->>>>>>> f9449570dcf9caf9eea3077b13a1ff51dd33a26d
 
 - if current_admin?
   = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
   = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'
-<<<<<<< HEAD
-=======
->>>>>>> Implementation of issue 13, admin show station, also implements visitor station show
->>>>>>> f9449570dcf9caf9eea3077b13a1ff51dd33a26d
+
