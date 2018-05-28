@@ -13,6 +13,8 @@ describe 'Admin' do
 
       trip2 = Trip.create(duration: 90, start_date: '2018-05-24 14:40:00' , end_date: '2018-05-24 14:42:01', bike_id: 2, subscription_type: 'Daily', end_station_id: station.id, start_station_id: station.id, zip_code: 60000)
 
+      success = "Trip-#{trip2.id} has been deleted!"
+
       visit trips_path
 
       within("#trip-#{trip2.id}") do
@@ -20,6 +22,7 @@ describe 'Admin' do
       end
 
       expect(page).to_not have_content(trip2.duration)
+      expect(page).to have_content(success)
     end
   end
 end
