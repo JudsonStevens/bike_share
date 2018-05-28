@@ -1,15 +1,14 @@
-h1 All Stations
-
-div class='station_info'
-    p
-      ' Station:
+h2
+  ul
+    li
       = @station.name
-    p
-      ' Dock count:
+    li
       = @station.dock_count
-    p
-      ' City:
+    li
       = @station.city
-    p
-      ' Installation date:
+    li
       = @station.installation_date
+
+- if current_admin?
+  = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
+  = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'

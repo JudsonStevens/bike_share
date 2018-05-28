@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
-  get '/dashboard', to: "users#show"
-  get "/:station-name", to: redirect("/%{station-name}")
+
+  get '/dashboard', to: 'users#show'
+
   root "homepages#index"
 
-  resources :stations
-  resources :users, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create]
+
+  resources :stations, except: [:show]
+  
   resources :trips, only: [:show, :index]
 
   namespace :admin do
