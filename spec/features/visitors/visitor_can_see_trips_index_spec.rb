@@ -16,7 +16,8 @@ describe 'Visitor' do
       expect(page).to have_content(trip_2.duration)
     end
     it 'should have a button to show more trips' do
-
+      station = Station.create(name )
+      end
     end
   end
 end
