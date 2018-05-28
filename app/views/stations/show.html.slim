@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1 All Stations
 
 div class='station_info'
@@ -13,3 +14,19 @@ div class='station_info'
     p
       ' Installation date:
       = @station.installation_date
+=======
+h2
+  ul
+    li
+      = @station.name
+    li
+      = @station.dock_count
+    li
+      = @station.city
+    li
+      = @station.installation_date
+
+- if current_admin?
+  = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
+  = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'
+>>>>>>> Implementation of issue 13, admin show station, also implements visitor station show
