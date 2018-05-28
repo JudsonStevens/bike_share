@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   root "homepages#index"
 
-  resources :users, only: [:new, :create, :index]
+  resources :users, only: [:new, :create]
 
   resources :stations
 
@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   get '/cart', to: "cart#index"
   patch '/bike-shop', to: "cart#update"
   delete '/bike-shop', to: 'cart#destroy'
+
+  get '/*path', to: 'unknowns#index'
 end

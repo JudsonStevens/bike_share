@@ -1,5 +1,8 @@
 class Admin::TripsController < Admin::BaseController
 
+  def show
+  end
+  
   def edit
     trip = Trip.find(params[:id])
   end
@@ -8,11 +11,8 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def destroy
-<<<<<<< HEAD
-=======
     trip = Trip.find(params[:id])
     trip.destroy
     redirect_to trips_path
->>>>>>> finished testing that admin can see edit/delete while user cannot
   end
 end

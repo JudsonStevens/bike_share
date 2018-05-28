@@ -17,8 +17,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      # Why is this coming up as format?
-      @user = User.find(params[:format])
+      @user = User.find(current_user.id)
     else
       redirect_to login_path, notice: 'You must log in to see the dashboard'
     end
