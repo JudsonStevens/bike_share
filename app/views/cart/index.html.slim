@@ -15,7 +15,7 @@ ul style="list-style-type:none;"
         = f.hidden_field(:item_id, value: item.id)
         p
           'Change Quantity
-          = f.select :quantity, options_for_select(0..25), {}, { value: item.id, class: 'form-control', style: 'width: 45px;', onchange: 'this.form.submit();'}
+          = f.select :quantity, options_for_select(1..25, session[:shopping_cart][item.id.to_s]), {}, { value: item.id, class: 'form-control', style: 'width: 45px;', onchange: 'this.form.submit();'}
     li
       'Subtotal - $
       = '%.2f' % (item.price * session[:shopping_cart][item.id.to_s].to_i)
