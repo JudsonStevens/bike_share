@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :build_cart
-  helper_method :current_user, :logged_in?, :admin?, :authorize, :log_in, :current_admin?
+  helper_method :current_user, :logged_in?, :authorize, :log_in, :current_admin?, :log_out
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -26,5 +26,10 @@ class ApplicationController < ActionController::Base
     if session[:shopping_cart].nil?
       session[:shopping_cart] = {}
     end
+  end
+
+  def log_out(user)
+    session.delete(:user_id)
+    @current_user = nil
   end
 end
