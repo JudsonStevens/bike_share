@@ -1,7 +1,24 @@
 - if current_user.nil?
   = redirect_to login_path, notice: 'You must log in to do that!'
 - else
-  = @user.username
-  = @user.first_name
-  = @user.last_name
-  = @user.address
+  ul
+    li
+      h2 
+        'Username:
+        = @user.username
+    li
+      h2 
+        'First Name:
+        = @user.first_name
+    li
+      h2 
+        'Last Name:
+        = @user.last_name
+    li
+      h2 
+        'Address:
+        = @user.address
+  ul
+    - @orders.each do |order|
+      li
+        = link_to "Order Number: #{order.id}", order_path(order)

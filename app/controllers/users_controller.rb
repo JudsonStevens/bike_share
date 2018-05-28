@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if current_user
       flash.now[:notice] = params[:flash_notice] if params[:flash_notice] 
       @user = User.find(current_user.id)
+      @orders = @user.orders
     else
       redirect_to login_path, notice: 'You must log in to see the dashboard'
     end

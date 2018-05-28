@@ -1,5 +1,5 @@
 class UnknownsController < ApplicationController
   def index
-    render file: 'public/404.html', status: :not_found
+    raise ActionController::RoutingError.new(params[:path])
   end
 end
