@@ -1,3 +1,4 @@
+
 <% if @trips.count >= 30 %>
 
 <h1>Trips</h1>
@@ -21,12 +22,14 @@
 <% end %>
 </div>
 
+
 <hr/>
 
 <%= will_paginate @trips%>
 
 <% else @trips.each do |trip| %>
 <div id="trip-<%= trip.id %>">
+
 
 <h3>Trip: <%= trip.id %></h3>
 <p>Duration: <%= trip.duration %></p>
@@ -38,10 +41,12 @@
 <p>Subscription: <%= trip.subscription_type %></p>
 <p>Zip Code: <%= trip.zip_code %></p>
 
+
 <% if current_admin? %>
     <%= button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
     <%= button_to 'Edit Trip,', edit_admin_trip_path(trip) %>
   <% end %>
 </div>
+
 <% end %>
 <% end %>

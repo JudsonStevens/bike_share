@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
+  get "/:station-name", to: redirect("/%{station-name}")
+
+
   get '/dashboard', to: 'users#show'
 
   root "homepages#index"
@@ -10,12 +13,14 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :stations, except: [:show]
-  
+
   resources :trips, only: [:show, :index]
+
 
   resources :stations, except: [:show]
 
   resources :trips, only: [:show, :index]
+
 
   namespace :admin do
     resources :stations
