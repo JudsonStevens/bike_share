@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 
-require 'support/factory_bot'
+# require 'support/factory_bot'
 require 'ffaker'
 
 
