@@ -29,6 +29,7 @@ describe 'Visitor' do
       built_trips = create_list(:trip, 60)
 
       visit trips_path
+<<<<<<< HEAD
 
       expect(page).to have_content('Next Page')
 <<<<<<< HEAD
@@ -37,6 +38,11 @@ describe 'Visitor' do
 =======
       expect(page).to have_content('Previous Page')
 >>>>>>> 22-visitor-trip-index WIP
+=======
+      expect(page).to have_content('Next')
+      click_on 'Next'
+      expect(page).to have_content('Previous')
+>>>>>>> Implements 22-visitor-trip-index
     end
   end
 end
