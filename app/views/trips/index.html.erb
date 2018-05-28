@@ -1,0 +1,58 @@
+<<<<<<< HEAD
+
+<% if @trips.count >= 30 %>
+<<<<<<< HEAD
+<%= paginate @trips %>
+<% binding.pry %>
+=======
+
+  <h1>Trips</h1>
+  <hr />
+  <% @trips.each do |trip| %>
+  <h2>Trip: <%= trip.id %></h2>
+  <p><%= trip.duration %></p>
+  <p>Start date: <%= trip.start_date %></p>
+  <p>Start station: <%= trip.start_station_id %></p>
+  <p>End date: <%= trip.end_date %></p>
+  <p>End station: <%= trip.end_station_id %></p>
+  <p><%= trip.bike_id %></p>
+  <p><%= trip.subscription_type %></p>
+  <p><%= trip.zip_code %></p>
+  <% end %>
+  <hr/>
+  <%= will_paginate @trips%>
+
+
+
+<<<<<<< HEAD
+>>>>>>> 22-visitor-trip-index WIP
+<%= link_to_next_page @trips, 'Next Page' %>
+
+
+<% else @trips.each do |trip| %>
+<%= trip.duration %>
+=======
+
+
+<% else @trips.each do |trip| %>
+<h3>Trip: <%= trip.id %></h3>
+<p>Duration: <%= trip.duration %></p>
+<p>Start date: <%= trip.start_date %></p>
+<p>Start station: <%= trip.start_station_id %></p>
+<p>End date: <%= trip.end_date %></p>
+<p>End station: <%= trip.end_station_id %></p>
+<p>Bike ID: <%= trip.bike_id %></p>
+<p>Subscription: <%= trip.subscription_type %></p>
+<p>Zip Code: <%= trip.zip_code %></p>
+>>>>>>> Implements 22-visitor-trip-index
+<% end %>
+<% end %>
+=======
+# Tried pagination each of these ways using tests and launchy. I couldn't get the trips to print to screen.
+<%= will_paginate @trips %>
+
+<% @trips.each do |trip| -%>
+  <p>Duration: <%= trip.duration %>
+  ...
+<% end -%>
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b

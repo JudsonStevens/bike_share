@@ -15,7 +15,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
+gem 'will_paginate', '~> 3.1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,6 +38,8 @@ gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rack_session_access'
+gem 'kaminari'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,7 +51,12 @@ group :development, :test do
   gem 'foundation-rails'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  gem 'factory_bot_rails'
+  gem "factory_bot_rails"
+  gem 'ffaker'
+<<<<<<< HEAD
+
+=======
+>>>>>>> ca30eacf08dcee70761cbb748003856e1b05830b
 end
 
 group :development do
