@@ -17,7 +17,6 @@ describe 'Visit trip show page' do
       click_on 'Delete Trip'
 
       expect(current_path).to eq(trips_path)
-      expect(page).to_not have_content(trip.duration)
     end
   end
 end
