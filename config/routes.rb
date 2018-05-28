@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
 =======
   resources :stations
-  resources :trips, only: [:show, :index]
 
+  resources :trips, only: [:show, :index]
 
 >>>>>>> 22-visitor-trip-index WIP
 
