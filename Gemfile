@@ -38,6 +38,7 @@ gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rack_session_access'
+
 gem 'kaminari'
 
 gem 'friendly_id'

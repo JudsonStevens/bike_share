@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   resources :stations, only: [:show]
 
   match '*path', to: 'unknowns#index', via: :all
+
 end
