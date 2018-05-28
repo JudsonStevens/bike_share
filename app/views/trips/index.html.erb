@@ -1,1 +1,7 @@
+# Tried pagination each of these ways using tests and launchy. I couldn't get the trips to print to screen.
 <%= will_paginate @trips %>
+
+<% @trips.each do |trip| -%>
+  <p>Duration: <%= trip.duration %>
+  ...
+<% end -%>
