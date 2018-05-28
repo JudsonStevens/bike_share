@@ -32,4 +32,14 @@ class ApplicationController < ActionController::Base
     session.delete(:user_id)
     @current_user = nil
   end
+
+  rescue_from ActionController::RoutingError do |exception|
+    logger.error 'Routing error occurred'
+    render file: 'public/404.html', status: 404
+  end
+
+  rescue_from ActionView::MissingTemplate do |exception|
+    logger.error exception.message
+    render file: 'public/404.html', status: 404
+  end
 end

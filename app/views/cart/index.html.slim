@@ -29,5 +29,5 @@ ul style="list-style-type:none;"
 - elsif current_user.nil?
   = link_to 'Check Out', login_path, class: "btn btn-primary btn-lg btn-block"
 - else
-  = link_to 'Check Out', dashboard_path(flash_notice: "Successfully submitted your order totaling $#{('%.2f' % @order_total)}"), class: "btn btn-primary btn-lg btn-block"
+  = link_to 'Check Out', orders_path(params: {flash_notice: "Successfully submitted your order totaling $#{('%.2f' % @order_total)}", order: {status: :ordered}, items: session[:shopping_cart] } ), class: "btn btn-primary btn-lg btn-block", method: :post
 

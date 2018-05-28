@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :trips
   end
 
+  resources :orders, only: [:new, :create, :show]
+
   get '/bike-shop', to: 'items#index'
   resources :items, only: [:show]
 
@@ -23,5 +25,5 @@ Rails.application.routes.draw do
   patch '/bike-shop', to: "cart#update"
   delete '/bike-shop', to: 'cart#destroy'
 
-  get '/*path', to: 'unknowns#index'
+  match '*path', to: 'unknowns#index', via: :all
 end
