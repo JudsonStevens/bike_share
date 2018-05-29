@@ -1,16 +1,45 @@
-
 h2
   ul
     li
+      'Name:
       = @station.name
     li
+      'Dock Count:
       = @station.dock_count
     li
+      'City:
       = @station.city
     li
-      = @station.installation_date
+      'Installation Date:
+      = @station.installation_date.strftime("%A, %m/%d/%Y")
 
 - if current_admin?
   = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
   = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'
 
+h2 Station Statistics
+
+div class="container-fluid"
+  ul class="station-statistics-list"
+    h4
+      li
+        'Number of Trips Starting at This Station:
+        = @station.sum_starting_trips
+      li
+        'Number of Trips Ending at This Station:
+        = @station.sum_ending_trips
+      li
+        'Most Frequent Destination Station from Here:
+        = @frequent_destination
+      li
+        'Most Frequent Origination Station for Trips to Here:
+        = @frequent_origination
+      li
+        'Date With the Highest Number of Starting Trips:
+        = @station.date_with_most_trip_starts.strftime("%A, %m/%d/%Y")
+      li
+        'Most Frequent Zip Codes for Users Starting Trips at this Station:
+        = @station.most_freq_zip_codes
+      li
+        'Most Frequent Bike ID Starting Trips Here:
+        = @station.most_freq_bike_id

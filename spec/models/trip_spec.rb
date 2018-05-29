@@ -8,7 +8,6 @@ describe Trip, type: :model do
     it { should validate_presence_of :start_station_id }
     it { should validate_presence_of :end_station_id }
     it { should validate_presence_of :subscription_type }
-    it { should validate_presence_of :zip_code }
     it { should validate_presence_of :bike_id }
   end
 

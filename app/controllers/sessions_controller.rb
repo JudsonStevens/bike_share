@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(session_params[:password])
       log_in(user)
       redirect_to dashboard_path(user)
+    elsif user.admin? && user.authenticate(session_params[:password])
+      log_in(user)
+      redirect_to admin_dashboard_path(user)
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render :new
