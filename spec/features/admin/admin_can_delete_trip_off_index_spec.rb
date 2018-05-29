@@ -16,11 +16,10 @@ describe 'Admin' do
       success = "Trip-#{trip2.id} has been deleted!"
 
       visit trips_path
-
       within("#trip-#{trip2.id}") do
         click_on 'Delete Trip'
       end
-
+      
       expect(page).to_not have_content(trip2.duration)
       expect(page).to have_content(success)
     end
