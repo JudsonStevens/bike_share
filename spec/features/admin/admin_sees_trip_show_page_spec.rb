@@ -47,7 +47,7 @@ describe 'Visit trip show page' do
   end
 
   describe 'as a regular user' do
-    it'cannot see an edit button or delete button on show page' do
+    it 'cannot see an edit button or delete button on show page' do
       user = User.create!(first_name: 'Willy', last_name: 'Billiams', address:'123 user street', username:'user', password: 'password')
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

@@ -6,10 +6,10 @@ class CartController < ApplicationController
 
   def update
     if session[:shopping_cart][params[:item][:item_id]].nil?
-      session[:shopping_cart][params[:item][:item_id]] = params[:item][:quantity]
+      session[:shopping_cart][params[:item][:item_id]] = (params[:item][:quantity]).to_i
       flash[:success] = "You have added #{Item.find(params[:item][:item_id]).title} to your cart!"
     else
-      session[:shopping_cart][params[:item][:item_id]] = params[:item][:quantity]
+      session[:shopping_cart][params[:item][:item_id]] = (params[:item][:quantity]).to_i
       flash[:success] = "You have updated your cart!"
     end
     redirect_back(fallback_location: bike_shop_path)
