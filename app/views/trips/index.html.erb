@@ -16,6 +16,11 @@
 <p><%= trip.zip_code %></p>
 <% if current_admin? %>
   <%= button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
+<<<<<<< HEAD
+  <%= link_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+=======
+  <%= button_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+>>>>>>> c51d1d0bed660656d13f52f6576a66b89a37fc39
   <% end %>
 <% end %>
 </div>
@@ -39,6 +44,11 @@
 
 <% if current_admin? %>
     <%= button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
+<<<<<<< HEAD
+    <%= link_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+=======
+    <%= button_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+>>>>>>> c51d1d0bed660656d13f52f6576a66b89a37fc39
   <% end %>
 </div>
 <% end %>
