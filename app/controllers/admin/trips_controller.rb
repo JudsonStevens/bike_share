@@ -3,6 +3,12 @@ class Admin::TripsController < Admin::BaseController
   def show
   end
 
+  def new
+  end
+
+  def create
+  end
+
   def edit
     @trip = Trip.find(params[:id])
   end
