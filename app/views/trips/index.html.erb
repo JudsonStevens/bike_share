@@ -16,7 +16,7 @@
 <p><%= trip.zip_code %></p>
 <% if current_admin? %>
   <%= button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
-  <%= link_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+  <%= button_to 'Edit Trip,', edit_admin_trip_path(trip) %>
   <% end %>
 <% end %>
 </div>
@@ -40,7 +40,7 @@
 
 <% if current_admin? %>
     <%= button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' %>
-    <%= link_to 'Edit Trip,', edit_admin_trip_path(trip) %>
+    <%= button_to 'Edit Trip,', edit_admin_trip_path(trip) %>
   <% end %>
 </div>
 <% end %>
