@@ -8,8 +8,8 @@ describe 'Admin' do
       item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-      
-      visit admin_dashboards_path(admin)
+
+      visit admin_dashboard_path(admin)
 
       expect(page).to have_link('View all Accessories')
       click_on 'View all Accessories'

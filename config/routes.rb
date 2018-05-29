@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stations
     resources :trips
-    resources :dashboards, only: [:index]
+    resources :dashboards, only: [:show]
   end
 
   resources :orders, only: [:new, :create, :show]
