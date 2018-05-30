@@ -1,0 +1,10 @@
+<h1>Bike Shop</h1>
+
+<% @items.each do |item| %>
+<%= item.image %>
+<%= item.title %>
+<%= item.price %>
+<%= item.description %>
+<%= link_to "Edit #{item.title}", edit_admin_item_path(item) %>
+<%= link_to "Retire #{item.title}", admin_item_path(item), method: :patch %>
+<% end %>

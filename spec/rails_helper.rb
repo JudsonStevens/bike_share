@@ -26,6 +26,10 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+<<<<<<< HEAD
+=======
+
+>>>>>>> TESTS admin station show WIP
 
 ActiveRecord::Migration.maintain_test_schema!
 

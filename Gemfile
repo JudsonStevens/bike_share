@@ -38,6 +38,7 @@ gem 'slim'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rack_session_access'
+
 gem 'kaminari'
 
 gem 'friendly_id'
@@ -54,6 +55,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem "factory_bot_rails"
   gem 'ffaker'
+
 end
 
 group :development do

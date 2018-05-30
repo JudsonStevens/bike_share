@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      flash.now[:notice] = params[:flash_notice] if params[:flash_notice] 
+      flash.now[:notice] = params[:flash_notice] if params[:flash_notice]
       @user = User.find(current_user.id)
       @orders = @user.orders
     else

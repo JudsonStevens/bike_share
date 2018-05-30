@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe 'Admin' do
   context 'who is logged in' do
     it 'can visit the station show page and see the information about that station along with an edit and delete button' do
