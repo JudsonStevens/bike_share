@@ -10,7 +10,7 @@ class Admin::TripsController < Admin::BaseController
   def create
     trip = Trip.new(trip_params)
     if trip.save
-      flash[:success] = "You created a new trip"
+      flash[:success] = "You have created a new trip!"
     end
     redirect_to trip_path(trip)
   end

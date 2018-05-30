@@ -8,6 +8,7 @@ describe 'as an admin' do
     bike_id = 1
     subscription_type = 'Monthly'
     zip_code = 12345
+    success = "You have created a new trip!"
 
     station1 = Station.create(name:'Turing Station', dock_count: 1, city: 'Denver', installation_date:'2018-05-01 01:00:00 UTC')
 
@@ -30,6 +31,17 @@ describe 'as an admin' do
     fill_in 'trip[zip_code]', with: zip_code
     click_on 'Create Trip'
 
-    expect(current_path).to eq(trip_path(Trip.last))
+    trip = Trip.last
+
+    expect(current_path).to eq(trip_path(trip))
+    expect(page).to have_content(trip.duration)
+    expect(page).to have_content(trip.start_date)
+    expect(page).to have_content(trip.end_date)
+    expect(page).to have_content(trip.bike_id)
+    expect(page).to have_content(trip.start_station_id)
+    expect(page).to have_content(trip.end_station_id)
+    expect(page).to have_content(trip.subscription_type)
+    expect(page).to have_content(trip.zip_code)
+    expect(page).to have_content(success)
   end
 end
