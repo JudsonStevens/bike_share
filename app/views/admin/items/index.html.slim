@@ -1,0 +1,29 @@
+h1 Bike Shop
+table class='table table-bordered'
+  thead
+    tr
+      th scope='col' Image
+      th scope='col' Title
+      th scope='col' Price
+      th scope='col' Description
+      - if current_admin?
+        th scope='col' Admin Actions
+  tbody
+    - @items.each do |item|
+      tr
+        td
+          img src="#{item.image}"
+        td
+          p
+            = item.title
+        td
+          p
+            = item.price
+        td
+          p
+            = item.description
+
+        - if current_admin?
+          td
+            = button_to "Edit #{item.title}", edit_admin_item_path(item)
+            = button_to "Retire #{item.title}", admin_item_path(item), method: :patch
