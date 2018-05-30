@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   patch '/bike-shop', to: "cart#update"
   delete '/bike-shop', to: 'cart#destroy'
 
-  resources :stations, only: [:show], path: ''
+  resources :stations, only: [:show]
 
   match '*path', to: 'unknowns#index', via: :all
 end

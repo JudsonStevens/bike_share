@@ -18,9 +18,9 @@ describe 'Visitor' do
       Trip.create(duration: 190, start_date: '2018-05-22 14:40:00' , end_date: '2018-05-24 14:44:01', bike_id: 2, subscription_type: 'Subscriber', end_station_id: station1.id, start_station_id: station4.id, zip_code:70000 )
       Trip.create(duration: 180, start_date: '2018-05-21 14:40:00' , end_date: '2018-05-24 14:47:01', bike_id: 1, subscription_type: 'Subscriber', end_station_id: station1.id, start_station_id: station2.id, zip_code:60000 )
 
-      visit("/#{station1.name.parameterize}")
+      visit("/stations/#{station1.name.parameterize}")
 
-      expect(current_path).to eq("/#{station1.name.parameterize}")
+      expect(current_path).to eq("/stations/#{station1.name.parameterize}")
       expect(page).to have_content(station1.name)
       expect(page).to have_content(station1.dock_count)
       expect(page).to have_content(station1.city)

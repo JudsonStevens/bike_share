@@ -20,7 +20,7 @@ describe 'Admin' do
 
       visit(admin_station_path(station1))
 
-      expect(current_path).to eq("/#{station1.name.parameterize}")
+      expect(current_path).to eq("/stations/#{station1.name.parameterize}")
       expect(page).to have_content(station1.name)
       expect(page).to have_content(station1.dock_count)
       expect(page).to have_content(station1.city)

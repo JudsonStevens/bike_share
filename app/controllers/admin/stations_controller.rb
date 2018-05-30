@@ -1,5 +1,5 @@
 class Admin::StationsController < Admin::BaseController
   def show
-    redirect_to ("/#{params[:id]}")
+    redirect_to ("/stations/#{params[:id]}")
   end
 end
