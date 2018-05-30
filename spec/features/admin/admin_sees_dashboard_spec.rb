@@ -37,13 +37,17 @@ describe 'Admin' do
       expect(page).to have_button("Retire #{item2.title}")
     end
     it 'should display all orders with order information' do
-      admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+      customer_1 = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'customer', password: 'customer', role: 0)
       item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
       item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
+      order_1 = customer_1.orders.create(status: 'ordered')
+      order_2 = customer_2.orders.create(status: 'completed')
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_dashboard_path(admin)
+      expect(page).to have_content("Orders: #{order_1.status}, #{order_2.status}")
+      expect(page).to have_content
     end
   end
 end
