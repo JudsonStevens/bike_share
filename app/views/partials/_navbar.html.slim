@@ -6,9 +6,12 @@ nav class="navbar navbar-default"
     ul class="nav navbar-nav"
       li class="#{current_class?(root_path) || current_class?(new_user_path)}"
         = link_to 'Home', root_path
-      - if current_user
-        li class="#{current_class?(dashboard_path(current_user))}"
-          = link_to 'Profile', dashboard_path(current_user)
+      - if current_user && !current_admin?
+        li class="#{current_class?(dashboard_path)}"
+          = link_to 'Profile', dashboard_path
+      - elsif current_admin?
+        li class="#{current_class?(admin_dashboard_path)}"
+          = link_to 'Admin Dashboard', admin_dashboard_path
       li class="#{current_class?(trips_path) || current_class?(trip_path(@trip))}"
         = link_to 'Trips', trips_path
       li class="#{current_class?(stations_path) || current_class?(station_path(@station))}"

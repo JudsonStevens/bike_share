@@ -10,7 +10,15 @@ class OrdersController < ApplicationController
     params[:items].each do |item_id, quantity|
       order.item_orders.create(item_id: item_id, quantity: quantity)
     end
-    redirect_to dashboard_path(flash_notice: params[:flash_notice])
+    if current_admin?
+      session[:flash_notice] = params[:flash_notice]
+      redirect_to admin_dashboard_path
+      return
+    else
+      session[:flash_notice] = params[:flash_notice]
+      redirect_to dashboard_path(flash_notice: params[:flash_notice])
+      return
+    end
   end
 
   private

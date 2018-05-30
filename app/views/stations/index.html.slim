@@ -1,16 +1,37 @@
 h1 All Stations
+- if current_admin?
+  = button_to 'Create a New Station', new_admin_station_path, method: :get
+table class="table table-striped table-bordered"
+  thead
+    tr
+      th scope="col"
+        'Station Name
+      th scope="col"
+        'Dock Count
+      th scope="col"
+        'City
+      th scope="col"
+        'Installation Date
+      - if current_admin?
+        th
+          'Admin Actions
+  tbody
+    - @stations.each do |station|
+      tr
+        th
+          p
+            = link_to "#{station.name}", station_path(station)
+        th
+          p
+            = station.dock_count
+        th
+          p
+            = station.city
+        th
+          p
+            = station.installation_date
+        - if current_admin?
+          th
+            = button_to 'Delete Trip', admin_station_path(station), method: :delete 
+            = button_to 'Edit Trip', edit_admin_station_path(station), method: :get
 
-div class='station_info'
-   - @stations.each do |station|
-    p
-      ' Station:
-      = link_to "#{station.name}", station_path(station)
-    p
-      ' Dock count:
-      = station.dock_count
-    p
-      ' City:
-      = station.city
-    p
-      ' Installation date:
-      = station.installation_date

@@ -8,6 +8,8 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
+    params["trip"]["start_date"] = Time.strptime(params["trip"]["start_date"], "%m/%d/%Y")
+    params["trip"]["end_date"] = Time.strptime(params["trip"]["end_date"], "%m/%d/%Y")
     trip = Trip.new(trip_params)
     if trip.save
       flash[:success] = "You have created a new trip!"
@@ -21,6 +23,8 @@ class Admin::TripsController < Admin::BaseController
 
   def update
     trip = Trip.find(params[:id])
+    params["trip"]["start_date"] = Time.strptime(params["trip"]["start_date"], "%m/%d/%Y") if params["trip"]["start_date"]
+    params["trip"]["end_date"] = Time.strptime(params["trip"]["end_date"], "%m/%d/%Y") if params["trip"]["end_date"]
     if trip.update(trip_params)
       flash[:success] = "You have updated Trip-#{Trip.find(params[:id]).id}!"
     end
