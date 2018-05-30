@@ -3,6 +3,18 @@ class Admin::TripsController < Admin::BaseController
   def show
   end
 
+  def new
+    @trip = Trip.new
+  end
+
+  def create
+    trip = Trip.new(trip_params)
+    if trip.save
+      flash[:success] = "You have created a new trip!"
+    end
+    redirect_to trip_path(trip)
+  end
+
   def edit
     @trip = Trip.find(params[:id])
   end

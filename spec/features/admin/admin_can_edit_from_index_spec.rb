@@ -13,7 +13,6 @@ describe 'Visits the trip index page' do
       trip1 = Trip.create(duration: 90, start_date: '2018-05-01 14:40:00' , end_date: '2018-05-02 14:42:01', bike_id: 2, subscription_type: 'monthly', end_station_id: station.id, start_station_id: station.id, zip_code:50023 )
 
       visit trips_path
-      save_and_open_page
 
       within("#trip-#{trip1.id}") do
         click_on 'Edit Trip'
