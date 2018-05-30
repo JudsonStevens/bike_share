@@ -14,6 +14,7 @@ describe 'Admin' do
       expect(page).to have_link('View all Accessories')
       click_on 'View all Accessories'
       expect(current_path).to eq("/admin/bike-shop")
+
       expect(page).to have_content(item1.price)
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item1.title)
@@ -24,6 +25,8 @@ describe 'Admin' do
       expect(page).to have_content(item2.image)
       expect(page).to have_link("Edit #{item1.title}")
       expect(page).to have_link("Edit #{item2.title}")
+      expect(page).to have_link("Retire #{item1.title}")
+      expect(page).to have_link("Retire #{item2.title}")
     end
   end
 end
