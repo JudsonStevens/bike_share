@@ -47,4 +47,9 @@ class ApplicationController < ActionController::Base
     logger.error exception.message
     render file: 'public/404.html', status: 404
   end
+
+  def action_missing(m, *args, &block)
+    logger.error(m)
+    redirect_to '/*path'
+  end
 end
