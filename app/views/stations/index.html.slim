@@ -4,7 +4,7 @@ div class='station_info'
    - @stations.each do |station|
     p
       ' Station:
-      = station.name
+      = link_to "#{station.name}", station_path(station)
     p
       ' Dock count:
       = station.dock_count
