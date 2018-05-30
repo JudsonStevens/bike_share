@@ -1,0 +1,92 @@
+h1 Trips
+- if current_admin?
+  = button_to 'Create a New Trip', new_admin_trip_path, method: :get
+hr 
+table class="table table-striped table-bordered"
+  thead
+    tr
+      th scope="col"
+        'ID
+      th scope="col"
+        'Duration
+      th scope="col"
+        'Start Date
+      th scope="col"
+        'End Date
+      th scope="col"
+        'Start Station
+      th scope="col"
+        'End Station
+      th scope="col"
+        'Bike ID
+      th scope="col"
+        'Subscription
+      th scope="col"
+        'Zip Code
+      - if current_admin?
+        th scope="col"
+          'Admin Actions
+  tbody
+    - @trips.each do |trip| 
+      tr
+        th 
+            = trip.id
+        th
+          p
+            = trip.duration 
+            '  minutes
+        th
+          p
+            = trip.start_date.strftime("%A, %m/%d/%Y") 
+        th
+          p
+            = trip.end_date.strftime("%A, %m/%d/%Y")
+        th
+          p
+            = trip.start_station.name
+        th
+          p
+            = trip.end_station.name
+        th
+          p
+            = trip.bike_id 
+        th
+          p
+            = trip.subscription_type 
+        th
+          p 
+            = trip.zip_code 
+        
+        - if current_admin? 
+          th
+            = button_to 'Delete Trip', admin_trip_path(trip), method: :delete 
+            = button_to 'Edit Trip', edit_admin_trip_path(trip), method: :get
+hr
+= will_paginate @trips
+
+
+/  else @trips.each do |trip| 
+/ div id="trip-= trip.id "
+
+
+/ h3Trip: = trip.id h3
+/ pDuration: = trip.duration p
+/ pStart date: = trip.start_date p
+/ pStart station: = trip.start_station_id p
+/ pEnd date: = trip.end_date p
+/ pEnd station: = trip.end_station_id p
+/ pBike ID: = trip.bike_id p
+/ pSubscription: = trip.subscription_type p
+/ pZip Code: = trip.zip_code p
+
+
+
+/  if current_admin? 
+/     = button_to 'Delete Trip', admin_trip_path(trip), method: 'delete' 
+/     = button_to 'Edit Trip,', edit_admin_trip_path(trip) 
+/    end 
+/ div
+
+
+/  end 
+/  end 

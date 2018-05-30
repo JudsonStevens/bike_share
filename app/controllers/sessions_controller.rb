@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
     user = User.find_by(username: session_params[:email])
     if !user.admin? && user.authenticate(session_params[:password])
       log_in(user)
-      redirect_to dashboard_path(user)
+      redirect_to dashboard_path
     elsif user.admin? && user.authenticate(session_params[:password])
       log_in(user)
-      redirect_to admin_dashboard_path(user)
+      redirect_to admin_dashboard_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render :new
@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out(current_user)
+    session[:shopping_cart] = nil
     redirect_to login_path
   end
 

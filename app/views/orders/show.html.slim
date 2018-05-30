@@ -1,31 +1,40 @@
-h1
-  'Order Number:
-  = @order.id
+- if current_user.orders.include?(@order)
+  h1
+    'Order Number:
+    = @order.id
 
-div class="container-fluid"
-  div class="row"
-    - @items.each do |item_hash|
-      div class="col-md-3" style="text-align: center;"
-        ul class="item-index-list" style="list-style-type: none;"
-          li
-            'Item Name:
-            = item_hash.keys.first.title
-          li
-            'Item Subtotal: $
-            = '%.2f' % (item_hash.keys.first.price * item_hash.values.first)
-h2 
-  'Order Total: $
-  = '%.2f' % @order_total
-h2
-  'Order Status:
-  = @order.status
-h2
-  'Order Submitted:
-  = @order.created_at
-h2
-  - if @order.status == 'completed'
-    'Order was shipped on 
-    = @order.updated_at
-  -elsif @order.status == 'canceled'
-    'Order was canceled on
-    = @order.updated_at
+  div class="container-fluid"
+    div class="row"
+      - @items.each do |item_hash|
+        div class="col-md-3" style="text-align: center;"
+          ul class="item-index-list" style="list-style-type: none;"
+            li
+              'Item Name:
+              = item_hash.keys.first.title
+            li
+              'Item Quantity:
+              = item_hash.values.first
+            li
+              'Item Subtotal: $
+              = '%.2f' % (item_hash.keys.first.price * item_hash.values.first)
+  h2
+    'Total Number of Items
+    = @items.map { |ele| ele.values.first }.sum
+  h2 
+    'Order Total: $
+    = '%.2f' % @order_total
+  h2
+    'Order Status:
+    = @order.status
+  h2
+    'Order Submitted:
+    = @order.created_at
+  h2
+    - if @order.status == 'completed'
+      'Order was shipped on 
+      = @order.updated_at
+    -elsif @order.status == 'canceled'
+      'Order was canceled on
+      = @order.updated_at
+- else
+  = render file: 'public/404'
