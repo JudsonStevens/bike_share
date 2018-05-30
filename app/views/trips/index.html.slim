@@ -30,7 +30,7 @@ table class="table table-striped table-bordered"
     - @trips.each do |trip| 
       tr
         th 
-            = trip.id
+            = link_to "#{trip.id}", trip_path(trip)
         th
           p
             = trip.duration 
