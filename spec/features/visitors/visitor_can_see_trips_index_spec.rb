@@ -21,6 +21,7 @@ describe 'Visitor' do
       built_trips = create_list(:trip, 60)
 
       visit trips_path
+      save_and_open_page
       expect(page).to have_content('Next')
       click_on 'Next'
       expect(page).to have_content('Previous')

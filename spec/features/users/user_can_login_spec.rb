@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User' do
   context 'user visits the login path' do
     it 'fills in their login info and clicks log in, then sees their dashboard and the login changes to logout' do
-      user1 = User.create(first_name: 'Charles', last_name: 'Xavier', username: 'Charles@gmail.com', password: '123', address: '1212 College Lane', role: 1)
+      user1 = User.create(first_name: 'Charles', last_name: 'Xavier', username: 'Charles@gmail.com', password: '123', address: '1212 College Lane')
 
       visit(login_path)
 
