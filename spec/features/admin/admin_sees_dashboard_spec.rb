@@ -18,15 +18,23 @@ describe 'Admin' do
       expect(page).to have_content(item1.price)
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item1.title)
-      expect(page).to have_content(item1.image)
+
+      within("#image-#{item1.id}") do
+        expect(page).to have_css("img[src*='#{item1.image}']")
+      end
+
       expect(page).to have_content(item2.price)
       expect(page).to have_content(item2.description)
       expect(page).to have_content(item2.title)
-      expect(page).to have_content(item2.image)
-      expect(page).to have_link("Edit #{item1.title}")
-      expect(page).to have_link("Edit #{item2.title}")
-      expect(page).to have_link("Retire #{item1.title}")
-      expect(page).to have_link("Retire #{item2.title}")
+
+      within("#image-#{item2.id}") do
+        expect(page).to have_css("img[src*='#{item2.image}']")
+      end
+
+      expect(page).to have_button("Edit #{item1.title}")
+      expect(page).to have_button("Edit #{item2.title}")
+      expect(page).to have_button("Retire #{item1.title}")
+      expect(page).to have_button("Retire #{item2.title}")
     end
   end
 end
