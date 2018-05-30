@@ -4,9 +4,15 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def new
+    @trip = Trip.new
   end
 
   def create
+    trip = Trip.new(trip_params)
+    if trip.save
+      flash[:success] = "You created a new trip"
+    end
+    redirect_to trip_path(trip)
   end
 
   def edit

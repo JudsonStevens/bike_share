@@ -9,7 +9,9 @@ describe 'as an admin' do
     subscription_type = 'Monthly'
     zip_code = 12345
 
-    station = Station.create(name:'Turing Station', dock_count: 1, city: 'Denver', installation_date:'2018-05-01 01:00:00 UTC')
+    station1 = Station.create(name:'Turing Station', dock_count: 1, city: 'Denver', installation_date:'2018-05-01 01:00:00 UTC')
+
+    station2 = Station.create(name:'Denver Station', dock_count: 2, city: 'Denver', installation_date:'2018-05-01 01:00:00 UTC')
 
     admin = User.create(first_name: 'Billy', last_name: 'Williams', address:'123 admin street', username:'admin', password: 'admin', role: 1)
 
@@ -17,15 +19,17 @@ describe 'as an admin' do
 
     visit new_admin_trip_path
 
+
     fill_in 'trip[duration]', with: duration
     fill_in 'trip[start_date]', with: start_date
     fill_in 'trip[end_date]', with: end_date
     fill_in 'trip[bike_id]', with: bike_id
-    fill_in 'trip[start_station_id]', with: start_station_id
-    fill_in 'trip[start_station_id]', with: end_station_id
+    select 'Turing Station', from: 'trip_start_station_id'
+    select 'Denver Station', from: 'trip_end_station_id'
     fill_in 'trip[subscription_type]', with: subscription_type
     fill_in 'trip[zip_code]', with: zip_code
+    click_on 'Create Trip'
 
-    expect(current_path).to eq(trip_path(trip))
+    expect(current_path).to eq(trip_path(Trip.last))
   end
 end
