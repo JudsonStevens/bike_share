@@ -12,8 +12,8 @@ div class="container-fluid" style="width: 85%;"
         = form.text_field :last_name, class: "form-control", placeholder: "Last Name", id: "validationDefault02", required: true
 
       div class="col-md-4 mb-3"
-        = form.label :username
-        = form.email_field :username, class: "form-control", placeholder: "Username", id: "validationDefaultUsername", required: true
+        = form.label :email
+        = form.email_field :username, class: "form-control", placeholder: "Email", id: "validationDefaultUsername", required: true
     
     div class="form-row"
       div style="width: 100%;"
@@ -29,6 +29,6 @@ div class="container-fluid" style="width: 85%;"
         = form.label :password_confirmation
         = form.password_field :password_confirmation, class: "form-control", placeholder: "Password", id: "validationDefaultPasswordConfirmation", required: true
 
-    div class="form-row" style="justify-content: center; margin-top: 35px;"
+    div class="form-row" style="justify-content: center; margin-top: 35px; margin-right: 45px;"
       div class="actions"
         = form.submit

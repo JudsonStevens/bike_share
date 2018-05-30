@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
 
   get '/dashboard', to: 'users#show'
+  get '/admin/dashboard', to: 'admin/dashboards#show'
 
   root "homepages#index"
 
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stations
     resources :trips
-    resources :dashboards, only: [:show]
     resources :items
     get '/bike-shop', to: 'items#index'
   end
