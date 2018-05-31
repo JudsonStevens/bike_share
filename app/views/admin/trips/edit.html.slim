@@ -16,11 +16,11 @@
   = f.text_field :subscription_type
 
   = f.label :start_station_id
-  = f.text_field :start_station_id
+  = f.collection_select :start_station_id, Station.all, :id, :name
 
   = f.label :end_station_id
-  = f.text_field :end_station_id
-
+  = f.collection_select :end_station_id, Station.all, :id, :name
+  
   = f.label :zip_code
   = f.text_field :zip_code
 
