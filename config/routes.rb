@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'users#show'
+
+  get '/admin/dashboard', to: 'admin/dashboards#show'
+  get '/admin/bike-shop/new', to: 'admin/items#new'
+
   resources :users, only: [:new, :create, :edit, :update]
 
   get "/:station-name", to: redirect("/%{station-name}")
