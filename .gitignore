@@ -32,3 +32,5 @@ db/data/station.csv
 db/data/status.csv
 db/data/trip.csv
 db/data/weather.csv
+# Ignore application configuration
+/config/application.yml
