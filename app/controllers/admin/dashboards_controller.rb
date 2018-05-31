@@ -2,6 +2,7 @@ class Admin::DashboardsController < Admin::BaseController
 
   def show
     if current_admin?
+
       if session[:flash_notice]
         flash.now[:success] = session[:flash_notice]
         session[:flash_notice] = nil
