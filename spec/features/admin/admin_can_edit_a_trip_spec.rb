@@ -6,8 +6,8 @@ describe 'Visit trip show page' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       duration = 90
-      start_date = '2018-05-01 14:40:00'
-      end_date = '2018-05-01 16:40:00'
+      start_date = '05/01/2018 14:40:00'
+      end_date = '05/01/2018 16:40:00'
       bike_id = 1
       subscription_type = 'Monthly'
       zip_code = 12345
@@ -41,11 +41,11 @@ describe 'Visit trip show page' do
 
       expect(current_path).to eq(trip_path(trip))
       expect(page).to have_content(duration)
-      expect(page).to have_content(start_date)
-      expect(page).to have_content(end_date)
+      expect(page).to have_content(Trip.last.start_date.strftime("%A, %m/%d/%Y"))
+      expect(page).to have_content(Trip.last.end_date.strftime("%A, %m/%d/%Y"))
       expect(page).to have_content(bike_id)
-      expect(page).to have_content(start_station_id)
-      expect(page).to have_content(end_station_id)
+      expect(page).to have_content(station2.name)
+      expect(page).to have_content(station.name)
       expect(page).to have_content(subscription_type)
       expect(page).to have_content(zip_code)
       expect(page).to have_content(success)

@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'as an admin' do
   it 'can create a new trip' do
     duration = 90
-    start_date = '2018-05-01 14:40:00'
-    end_date = '2018-05-01 16:40:00'
+    start_date = '05/01/2018 14:40:00'
+    end_date = '05/01/2018 16:40:00'
     bike_id = 1
     subscription_type = 'Monthly'
     zip_code = 12345
@@ -35,11 +35,11 @@ describe 'as an admin' do
 
     expect(current_path).to eq(trip_path(trip))
     expect(page).to have_content(trip.duration)
-    expect(page).to have_content(trip.start_date)
-    expect(page).to have_content(trip.end_date)
+    expect(page).to have_content(trip.start_date.strftime("%A, %m/%d/%Y"))
+    expect(page).to have_content(trip.end_date.strftime("%A, %m/%d/%Y"))
     expect(page).to have_content(trip.bike_id)
-    expect(page).to have_content(trip.start_station_id)
-    expect(page).to have_content(trip.end_station_id)
+    expect(page).to have_content(station1.name)
+    expect(page).to have_content(station2.name)
     expect(page).to have_content(trip.subscription_type)
     expect(page).to have_content(trip.zip_code)
     expect(page).to have_content(success)

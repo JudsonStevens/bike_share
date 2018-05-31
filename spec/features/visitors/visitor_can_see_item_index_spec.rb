@@ -38,13 +38,10 @@ describe 'Visitor' do
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
       visit(bike_shop_path)
-      within(first('form')) do
-        fill_in('item[quantity]', with: 2)
-      end
       first('form').click_button('Add to Cart', match: :first)
 
       expect(page).to have_content("You have added #{item1.title} to your cart!")
-      expect(page).to have_content('Shopping Cart - 2')
+      expect(page).to have_content('Shopping Cart - 1')
     end
   end
 end
