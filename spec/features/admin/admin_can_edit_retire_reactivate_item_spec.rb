@@ -26,9 +26,12 @@ describe 'Admin visits admin bike-shop' do
     fill_in 'item[description]', with: description
     click_on 'Update Item'
 
-
     expect(current_path).to eq(admin_bike_shop_path)
-    expect(page).to have_content()
-    save_and_open_page
+    expect(page).to have_content(title)
+    expect(page).to have_content(price)
+    expect(page).to have_content(description)
+    within("#image-#{item1.id}") do
+      expect(page).to have_css("img[src*='#{image}']")
+    end
   end
 end
