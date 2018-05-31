@@ -36,7 +36,7 @@ describe 'Visitor' do
       item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 5 } )
+      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 1 } )
       visit(cart_path)
       within(all('form').last) do
         click_on('Remove Item From Cart')
@@ -47,35 +47,25 @@ describe 'Visitor' do
       expect(page).to_not have_content(item3.description)
     end
 
-    # Ask how to test a select with auto refresh/change
-    xit 'can increase the quantity of an item and it should reflect in the cart' do
+    it 'can increase the quantity of an item and it should reflect in the cart' do
       item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
-      item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
-      item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
-      item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 5 } )
+      page.set_rack_session(shopping_cart: { item1.id => 2} )
+
       visit(cart_path)
-
-      within(first('form')) do
-        select('3', from: 'item[quantity]')
-      end
+      click_on('Add to Cart')
 
       expect(page).to have_content('Quantity - 3')
     end
 
-    xit 'can decrease the quantity of an item and it should reflect in the cart' do
+    it 'can decrease the quantity of an item and it should reflect in the cart' do
       item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
-      item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
-      item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
-      item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
-      page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 5 } )
+      page.set_rack_session(shopping_cart: { item1.id => 2} )
+
       visit(cart_path)
 
-      within(first('form')) do
-        select('1', from: 'item[quantity]')
-      end
+      click_on('Remove Item From Cart')
 
       expect(page).to have_content('Quantity - 1')
     end

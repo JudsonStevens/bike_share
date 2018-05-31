@@ -18,14 +18,12 @@ describe 'Admin' do
       fill_in('station[dock_count]', with: dock_count)
 
       click_on('Create Station')
-
       expect(current_path).to eq(station_path(Station.last))
 
       expect(page).to have_content(name)
       expect(page).to have_content(city)
       expect(page).to have_content(dock_count)
+      expect(page).to have_content("You have created a new station called #{name}!")
     end
   end
 end
-
-
