@@ -1,0 +1,27 @@
+h1
+  'Edit Station:
+  = @station.name
+
+div class="container-fluid" style="width: 85%;"
+  = form_for([:admin, @station], html: { class: "needs-validation" }) do |form|
+    div class="form-row"
+      div class="col-md-4 mb-3"
+        = form.label :name
+        = form.text_field :name, class: "form-control", placeholder: "Station Name", required: true
+
+      div class="col-md-4 mb-3"
+        = form.label :city
+        = form.text_field :city, class: "form-control", placeholder: "City", required: true
+
+    div class="form-row" style="margin-top: 15px;"
+      div class="col-md-4 mb-3" 
+        = form.label :dock_count
+        = form.number_field :dock_count, class: "form-control", placeholder: "Dock Count", required: true
+    
+      div class="col-md-4 mb-3" style="margin-top: 25px;"
+        = form.label :installation_date
+        = form.date_select :installation_date, class: "form-control" , required: true
+
+    div class="form-row" style="justify-content: center; margin-top: 35px; margin-right: 45px;"
+      div class="actions"
+        = form.submit

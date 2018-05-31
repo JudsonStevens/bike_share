@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :stations, except: [:show]
-  resources :stations, only: [:show]
+  resources :stations, only: [:index, :show]
 
   resources :trips, only: [:show, :index]
 
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :show]
 
   namespace :admin do
-    resources :stations, only: [:new, :create, :destroy, :edit]
+    resources :stations, only: [:new, :create, :destroy, :edit, :update]
     resources :trips
     resources :items
     get '/bike-shop', to: 'items#index'
