@@ -1,0 +1,36 @@
+h1 Bike Shop
+table class='table table-bordered'
+  thead
+    tr
+      th scope='col' Image
+      th scope='col' Title
+      th scope='col' Price
+      th scope='col' Description
+      - if current_admin?
+        th scope='col' Admin Actions
+  tbody
+    - @items.each do |item|
+      tr
+        td id="image-#{item.id}"
+          img src="#{item.image}"
+        td
+          p
+<<<<<<< HEAD
+            = link_to item.title, item_path(item)
+=======
+            = item.title
+>>>>>>> 9cc70603abaf1401c9d2b5946bfa84281aedafad
+        td
+          p
+            = number_to_currency(item.price)
+        td
+          p
+            = item.description
+
+        - if current_admin?
+          td
+            = button_to "Edit #{item.title}", edit_admin_item_path(item), method: :get
+            - if item.is_retired? == true
+              = button_to "Reactivate #{item.title}", admin_item_path(item, "item[is_retired?]" => false), method: :put, type: 'submit'
+            - else
+              = button_to "Retire #{item.title}", admin_item_path(item, "item[is_retired?]" => true), method: :put, type: 'submit'
