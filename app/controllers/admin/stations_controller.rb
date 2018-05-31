@@ -11,7 +11,7 @@ class Admin::StationsController < Admin::BaseController
     params[:station][:installation_date] = "#{params[:station]["installation_date(2i)"]}/#{params[:station]["installation_date(3i)"]}/#{params[:station]["installation_date(1i)"]}"
     station = Station.new(station_params)
     if station.save
-      flash.now[:success] = "You have created a new station!"
+      flash[:success] = "You have created a new station called #{station.name}!"
     end
     redirect_to station_path(station)
   end
