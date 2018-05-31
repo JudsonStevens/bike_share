@@ -34,4 +34,8 @@ describe 'Admin visits admin bike-shop' do
       expect(page).to have_css("img[src*='#{image}']")
     end
   end
+
+  it 'can retire an accessory' do
+    
+  end
 end
