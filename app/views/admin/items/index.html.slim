@@ -15,7 +15,7 @@ table class='table table-bordered'
           img src="#{item.image}"
         td
           p
-            = item.title
+            = link_to item.title, item_path(item)
         td
           p
             = number_to_currency(item.price)
