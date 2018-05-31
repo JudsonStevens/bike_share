@@ -41,6 +41,7 @@ gem 'jquery-rails'
 gem 'rack_session_access'
 gem 'kaminari'
 gem 'friendly_id'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

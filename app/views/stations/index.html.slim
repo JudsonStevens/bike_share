@@ -29,7 +29,7 @@ table class="table table-striped table-bordered"
             = station.city
         th
           p
-            = station.installation_date
+            = station.installation_date.strftime("%A, %m/%d/%Y")
         - if current_admin?
           th
             = button_to 'Delete Trip', admin_station_path(station), method: :delete 
