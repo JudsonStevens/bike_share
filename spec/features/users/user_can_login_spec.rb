@@ -14,7 +14,7 @@ describe 'User' do
         click_on('Log In')
       end
 
-      expect(current_path).to eq(dashboard_path(user1))
+      expect(current_path).to eq(dashboard_path)
       expect(page).to have_content(user1.first_name)
       expect(page).to have_content(user1.last_name)
       expect(page).to have_content(user1.address)

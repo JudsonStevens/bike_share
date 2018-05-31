@@ -8,8 +8,8 @@ describe 'Visitor visits trip show page' do
     visit trip_path(trip)
 
     expect(page).to have_content(trip.duration)
-    expect(page).to have_content(trip.start_date)
-    expect(page).to have_content(trip.end_date)
+    expect(page).to have_content(trip.start_date.strftime("%A, %m/%d/%Y"))
+    expect(page).to have_content(trip.end_date.strftime("%A, %m/%d/%Y"))
     expect(page).to have_content(trip.bike_id)
     expect(page).to have_content(trip.subscription_type)
   end

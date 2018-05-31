@@ -37,7 +37,7 @@ describe 'User' do
       click_on('Check Out')
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_link("Order Number: #{Order.last.id}")
+      expect(page).to have_link("Order ID: #{Order.last.id}")
     end
 
     it 'can checkout items, click on the new order in their dashboard, and see details about that order' do
@@ -56,13 +56,13 @@ describe 'User' do
 
       click_on('Check Out')
       order = Order.last
-      click_on("Order Number: #{order.id}")
+      click_on("Order ID: #{order.id}")
 
       expect(current_path).to eq(order_path(order))
       expect(page).to have_content(item1.title)
       expect(page).to have_content(item2.title)
       expect(page).to have_content(item3.title)
-      expect(page).to have_content("Order Number: #{order.id}")
+      expect(page).to have_content("Order ID: #{order.id}")
       expect(page).to have_content('Order Total: $ 250.00')
       expect(page).to have_content("Order Status: #{order.status}")
       expect(page).to have_content("Order Submitted: #{order.created_at}")
@@ -82,7 +82,7 @@ describe 'User' do
 
       visit(dashboard_path)
 
-      click_on("Order Number: #{order1.id}")
+      click_on("Order ID: #{order1.id}")
 
       expect(page).to have_content("Order was canceled on #{order1.updated_at}")
     end

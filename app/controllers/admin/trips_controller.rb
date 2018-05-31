@@ -8,8 +8,8 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
-    params["trip"]["start_date"] = Time.strptime(params["trip"]["start_date"], "%m/%d/%Y")
-    params["trip"]["end_date"] = Time.strptime(params["trip"]["end_date"], "%m/%d/%Y")
+    params["trip"]["start_date"] = Time.strptime(params["trip"]["start_date"], "%m/%d/%Y %H:%M")
+    params["trip"]["end_date"] = Time.strptime(params["trip"]["end_date"], "%m/%d/%Y %H:%M")
     trip = Trip.new(trip_params)
     if trip.save
       flash[:success] = "You have created a new trip!"

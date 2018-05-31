@@ -3,29 +3,34 @@ div class="container-fluid"
     - @items.each do |item|
       div class="col-md-3" style="text-align: center;"
         ul class="item-index-list" style="list-style-type: none;"
-            li
-              = item.title
-            li
-              '$
-              = '%.2f' % item.price
-            li
-              = image_tag("#{item.image}")
-            li
-              'Quantity -
-              = (session[:shopping_cart][item.id.to_s]).to_i
-            / li
-            /   = form_for(:item, url: bike_shop_path, method: :patch) do |f|
-            /     = f.hidden_field(:item_id, value: item.id)
-            /     p
-            /       'Change Quantity
-            /       = f.select :quantity, options_for_select(1..25, session[:shopping_cart][item.id.to_s]), {}, { value: item.id, class: 'form-control', style: 'width: 45px;', onchange: 'this.form.submit();'}
-            li
-              'Subtotal - $
-              = '%.2f' % (item.price * session[:shopping_cart][item.id.to_s].to_i)
-            li
-              = form_for(:item, url: bike_shop_path, method: :delete) do |f|
-                = f.hidden_field(:item_id, value: item.id)
-                = f.submit 'Remove Item From Cart'
+          li
+            = item.title
+          li
+            'Item Price: $
+            = '%.2f' % item.price
+          li
+            = image_tag("#{item.image}")
+          li
+            'Quantity -
+            = (session[:shopping_cart][item.id.to_s]).to_i
+          / li
+          /   = form_for(:item, url: bike_shop_path, method: :patch) do |f|
+          /     = f.hidden_field(:item_id, value: item.id)
+          /     p
+          /       'Change Quantity
+          /       = f.select :quantity, options_for_select(1..25, session[:shopping_cart][item.id.to_s]), {}, { value: item.id, class: 'form-control', style: 'width: 45px;', onchange: 'this.form.submit();'}
+          li 
+            = form_for(:item, url: bike_shop_path, method: :patch) do |f|
+              = f.hidden_field(:item_id, value: item.id)
+              = f.hidden_field(:quantity, value: 1)
+              = f.button 'Add to Cart', type: "submit"
+          li
+            'Subtotal - $
+            = '%.2f' % (item.price * session[:shopping_cart][item.id.to_s].to_i)
+          li
+            = form_for(:item, url: bike_shop_path, method: :delete) do |f|
+              = f.hidden_field(:item_id, value: item.id)
+              = f.submit 'Remove Item From Cart'
 
 - if session[:shopping_cart].length == 0
   h2 Add items to your cart through the Bike Shop!
