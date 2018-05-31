@@ -4,13 +4,24 @@ class Admin::ItemsController < Admin::BaseController
     @items = Item.all
   end
 
+  def new
+    @item = Item.new(params[:id])
+  end
+
+  def create
+    item = Item.new(item_params)
+    if item.save
+      flash[:success] = "#{item.title} has been created"
+    end
+  end
+
   def edit
     @item = Item.find(params[:id])
   end
 
+
   def update
     params["item"]["is_retired?"] = (params["item"]["is_retired?"])
-
     item = Item.find(params[:id])
     if item.update(item_params)
       if params["item"]["is_retired?"] == 'false'

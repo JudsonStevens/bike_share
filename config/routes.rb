@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#show'
   get '/admin/dashboard', to: 'admin/dashboards#show'
+  get '/admin/bike-shop/new', to: 'admin/items#new'
 
 
   resources :users, only: [:new, :create]
