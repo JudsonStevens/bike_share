@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/admin/dashboard', to: 'admin/dashboards#show'
 
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
 
   resources :stations, only: [:index, :show]
 
