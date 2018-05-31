@@ -9,6 +9,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def update
+<<<<<<< HEAD
     params["item"]["is_retired?"] = (params["item"]["is_retired?"])
 
     item = Item.find(params[:id])
@@ -20,6 +21,11 @@ class Admin::ItemsController < Admin::BaseController
       else
         flash[:success] = "You have updated #{item.title}"
       end
+=======
+    item = Item.find(params[:id])
+    if item.update(item_params)
+      flash[:success] = "You have updated #{item.title}"
+>>>>>>> tested admin can edit items from admin dashboard
     end
 
     redirect_to admin_bike_shop_path
@@ -28,7 +34,11 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def item_params
+<<<<<<< HEAD
     params.require(:item).permit(:title, :price, :image, :description, :is_retired?)
+=======
+    params.require(:item).permit(:title, :price, :image, :description)
+>>>>>>> tested admin can edit items from admin dashboard
   end
 
 end
