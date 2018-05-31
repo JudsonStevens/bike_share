@@ -34,4 +34,24 @@ class Station < ApplicationRecord
   def most_freq_bike_id
     start_stations.group(:bike_id).order("count_all DESC").count.first[0]
   end
+
+  def self.oldest_station
+    order("installation_date ASC").first
+  end
+
+  def self.newest_station
+    order("installation_date DESC").first
+  end
+
+  def self.most_bikes
+    order("dock_count DESC").first
+  end
+
+  def self.least_bikes
+    order("dock_count ASC").first
+  end
+
+  def self.average_bikes
+    average(:dock_count).round
+  end
 end
