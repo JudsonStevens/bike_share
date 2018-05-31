@@ -35,5 +35,6 @@ db/data/weather.csv
 # Ignore application configuration
 /config/application.yml
 
+
 .DS*
 .rspec

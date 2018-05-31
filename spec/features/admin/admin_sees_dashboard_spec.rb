@@ -47,6 +47,7 @@ describe 'Admin' do
 
 
       expect(page).to have_content("Orders:")
+      save_and_open_page
       expect(page).to have_content("#{order_1.status}")
       expect(page).to have_content("#{order_2.status}")
     end

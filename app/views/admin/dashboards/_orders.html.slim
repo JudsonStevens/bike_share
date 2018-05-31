@@ -1,0 +1,8 @@
+h2 Orders:
+ul
+  - @orders.each do |order|
+    li
+      ' Order ID:
+      = link_to "#{order.id}", order_path(order)
+      '  - Status:
+      = link_to "#{order.status}", order_path(order)
