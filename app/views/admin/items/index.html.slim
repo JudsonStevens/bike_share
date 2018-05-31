@@ -26,4 +26,7 @@ table class='table table-bordered'
         - if current_admin?
           td
             = button_to "Edit #{item.title}", edit_admin_item_path(item), method: :get
-            = button_to "Retire #{item.title}", admin_item_path(item), method: :patch
+            - if item.is_retired? == true
+              = button_to "Reactivate #{item.title}", admin_item_path(item, "item[is_retired?]" => false), method: :put, type: 'submit'
+            - else
+              = button_to "Retire #{item.title}", admin_item_path(item, "item[is_retired?]" => true), method: :put, type: 'submit'

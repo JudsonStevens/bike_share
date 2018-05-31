@@ -9,8 +9,8 @@ describe 'Admin visits admin bike-shop' do
     image = 'https://nerdist.com/wp-content/uploads/2017/05/jurassic-park-jeff-goldblum-970x545.jpg'
     description = 'Jeff Goldblum is a Stegasaurous'
 
-    item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
-    item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
+    item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes', is_retired?: false)
+    item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice', is_retired?: false)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -33,9 +33,5 @@ describe 'Admin visits admin bike-shop' do
     within("#image-#{item1.id}") do
       expect(page).to have_css("img[src*='#{image}']")
     end
-  end
-
-  it 'can retire an accessory' do
-    
   end
 end
