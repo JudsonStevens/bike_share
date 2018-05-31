@@ -18,12 +18,12 @@ nav class="navbar navbar-default"
         = link_to 'Stations', stations_path
       li class="#{current_class?(bike_shop_path)}"
         = link_to 'Bike Shop', bike_shop_path
-      / li class="#{current_class?(station_dashboard_path)}"
-      /   = link_to 'Station Dashboard', station_dashboard_path
+      li class="#{current_class?(stations_dashboard_path)}"
+        = link_to 'Station Dashboard', stations_dashboard_path
       / li class="#{current_class?(trip_dashboard_path)}"
       /   = link_to 'Trip Dashboard', trip_dashboard_path
     ul class="nav navbar-nav navbar-right"
-      - if current_user
+      - if current_user && !current_admin?
         li style="margin-top:17px;"
           ' Logged in as
           = current_user.username

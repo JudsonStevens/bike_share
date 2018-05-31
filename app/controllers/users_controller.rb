@@ -33,7 +33,10 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      flash.now[:success] = session[:flash_notice] if session[:flash_notice]
+      if session[:flash_notice]
+        flash.now[:success] = session[:flash_notice]
+        session[:flash_notice] = nil
+      end
       @user = User.find(current_user.id)
       @orders = @user.orders
     else
