@@ -30,8 +30,8 @@ describe 'Visit trip show page' do
       fill_in 'trip[start_date]', with: start_date
       fill_in 'trip[end_date]', with: end_date
       fill_in 'trip[bike_id]', with: bike_id
-      fill_in 'trip[start_station_id]', with: start_station_id
-      fill_in 'trip[start_station_id]', with: end_station_id
+      select 'Turing Station', from: 'trip_start_station_id'
+      select 'During Station', from: 'trip_end_station_id'
       fill_in 'trip[subscription_type]', with: subscription_type
       fill_in 'trip[zip_code]', with: zip_code
 
