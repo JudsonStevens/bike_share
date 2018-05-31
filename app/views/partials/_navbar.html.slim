@@ -23,7 +23,7 @@ nav class="navbar navbar-default"
         li style="margin-top:17px;"
           ' Logged in as
           = current_user.username
-      - elsif current_user.admin?
+      - elsif current_admin?
         li style="margin-top:17px;"
           'Logged in as Admin User:
           = current_user.username

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "homepages#index"
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
@@ -9,39 +11,29 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/admin/dashboard', to: 'admin/dashboards#show'
 
-  root "homepages#index"
 
   resources :users, only: [:new, :create]
 
   resources :stations, except: [:show]
+  resources :stations, only: [:show]
 
   resources :trips, only: [:show, :index]
 
+  resources :items, only: [:show]
+  get '/bike-shop', to: 'items#index'
 
-  resources :stations, except: [:show]
-
-  resources :trips, only: [:show, :index]
-
+  resources :orders, only: [:new, :create, :show]
 
   namespace :admin do
-    resources :stations
+    resources :stations, only: [:new, :create, :destroy, :edit]
     resources :trips
     resources :items
     get '/bike-shop', to: 'items#index'
   end
 
-  resources :items, only: [:show]
-  resources :orders, only: [:new, :create, :show]
-
-  get '/bike-shop', to: 'items#index'
-
-
   get '/cart', to: "cart#index"
   patch '/bike-shop', to: "cart#update"
   delete '/bike-shop', to: 'cart#destroy'
 
-  resources :stations, only: [:show]
-
   match '*path', to: 'unknowns#index', via: :all
-
 end
