@@ -4,16 +4,7 @@ class Order < ApplicationRecord
   has_many :items, through: :item_orders
   validates_presence_of :status
 
-
-  def cancel_order
-    order.status = 'cancelled'
-  end
-
-  def mark_as_paid
-    order.status = 'paid'
-  end
-
-  def mark_as_completed
-    order.status = 'completed'
+  def self.status_count(status)
+    where(status: status).count
   end
 end

@@ -25,13 +25,12 @@ ul
 
 = link_to 'View all Accessories', admin_bike_shop_path
 
-ul
 
+ul
   - @orders.each do |order|
     li
       = link_to "Order ID: #{order.id}", order_path(order)
-  li
-    = link_to 'All Orders', admin_dashboard_path(type: 'all'), remote: true
+ul
   li
     = link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled'), remote: true
   li
