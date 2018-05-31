@@ -10,7 +10,6 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     params["item"]["is_retired?"] = (params["item"]["is_retired?"])
-
     item = Item.find(params[:id])
     if item.update(item_params)
       if params["item"]["is_retired?"] == 'false'
@@ -21,7 +20,6 @@ class Admin::ItemsController < Admin::BaseController
         flash[:success] = "You have updated #{item.title}"
       end
     end
-
     redirect_to admin_bike_shop_path
   end
 
