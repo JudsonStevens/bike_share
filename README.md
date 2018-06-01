@@ -33,7 +33,7 @@ This project simulates a bike accessory shop and also contains information about
 
 If you would like to run this application on your local machine, follow these steps. 
 
-```
+
 1. Fork this repository and clone the forked repository.
 2. Once you have the forked repository cloned, navigate to the root directory of the application.
 3. From the root directory of the application, run these two commands:
@@ -41,4 +41,4 @@ If you would like to run this application on your local machine, follow these st
   bundle install
   bundle update
   ```
-```
+
