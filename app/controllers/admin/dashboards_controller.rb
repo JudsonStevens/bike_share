@@ -1,5 +1,5 @@
 class Admin::DashboardsController < Admin::BaseController
-  #respond_to :js, :html
+  respond_to :js, :html
 
   def show
     if current_admin?
@@ -13,11 +13,6 @@ class Admin::DashboardsController < Admin::BaseController
       @orders = Order.all
       flash.now[:success] = session[:flash_notice] if session[:flash_notice]
       @orders = Order.all
-
-      @ordered = Order.where(status: 'ordered')
-      @paid = Order.where(status: 'paid')
-      @completed = Order.where(status: 'completed')
-      @cancelled = Order.where(status: 'cancelled')
 
 
     else
