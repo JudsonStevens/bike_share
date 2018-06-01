@@ -13,6 +13,8 @@ class Admin::ItemsController < Admin::BaseController
     if item.save
       flash[:success] = "#{item.title} has been created"
     end
+
+    redirect_to item_path(item)
   end
 
   def edit
