@@ -10,7 +10,7 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_dashboard_path(admin)
-
+      save_and_open_page
       expect(page).to have_link('View all Accessories')
       click_on 'View all Accessories'
       expect(current_path).to eq("/admin/bike-shop")

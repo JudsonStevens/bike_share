@@ -14,6 +14,12 @@ class Admin::DashboardsController < Admin::BaseController
       flash.now[:success] = session[:flash_notice] if session[:flash_notice]
       @orders = Order.all
 
+      @ordered = Order.where(status: 'ordered')
+      @paid = Order.where(status: 'paid')
+      @completed = Order.where(status: 'completed')
+      @cancelled = Order.where(status: 'cancelled')
+
+
     else
       render 'public/404'
     end
