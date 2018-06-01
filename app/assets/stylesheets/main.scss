@@ -13,3 +13,16 @@
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
   background-color: lightgrey;
 }
+
+.home-page:before {
+  background-image: URL("Bike-Share.jpg");
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: .5;
+}
