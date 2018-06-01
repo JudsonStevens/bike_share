@@ -33,6 +33,8 @@ describe 'As an admin' do
       click_on 'Create Item'
 
       item = Item.last
+
+      expect(current_path).to eq(item_path(item))
       
       expect(item.title).to eq(title)
       expect(item.price).to eq(price)
