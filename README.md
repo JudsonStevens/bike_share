@@ -37,8 +37,13 @@ If you would like to run this application on your local machine, follow these st
 1. Fork this repository and clone the forked repository.
 2. Once you have the forked repository cloned, navigate to the root directory of the application.
 3. From the root directory of the application, run these two commands:
-  ```ruby
-  bundle install
-  bundle update
-  ```
+```ruby
+bundle install
+bundle update
+```
+4. Once both of those commands have been run, you can run our test suite by running this command from the root directory:
+```ruby
+rspec
+```
+5. 
 
