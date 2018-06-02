@@ -1,5 +1,5 @@
 h1 Admin Dashboard
-= button_to 'Create New Accessory', admin_bike_shop_new_path, method: 'get'
+
 h2
   = link_to 'Edit Profile Information', edit_user_path(@user)
 ul
@@ -19,7 +19,10 @@ ul
     h2
       'Address:
       = @user.address
-      
+
+
+= button_to 'Create New Accessory', admin_bike_shop_new_path, method: 'get'
+
 = link_to 'View all Accessories', admin_bike_shop_path
 
 ul
