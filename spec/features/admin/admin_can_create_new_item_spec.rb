@@ -70,7 +70,6 @@ describe 'As an admin' do
       title = "Jeff Goldblum"
       price = -1.00
       description = 'Jeff Goldblum is a tryranasarous'
-      placeholder = 'https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg'
       error = "Item needs a price greater than zero"
 
       admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
@@ -82,6 +81,58 @@ describe 'As an admin' do
       fill_in 'item[title]', with: title
       fill_in 'item[price]', with: price
       fill_in 'item[description]', with: description
+      click_on 'Create Item'
+
+      expect(page).to have_content(error)
+    end
+
+    it 'cannot create an item without a title' do
+      price = 11.00
+      description = 'Jeff Goldblum is a tryranasarous'
+      error = "Item missing title"
+
+      admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_new_path
+
+      fill_in 'item[price]', with: price
+      fill_in 'item[description]', with: description
+      click_on 'Create Item'
+
+      expect(page).to have_content(error)
+    end
+
+    it 'cannot create an item without a title' do
+      title = 'Jeff'
+      price = 11.00
+      error = "Item missing description"
+
+      admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_new_path
+
+      fill_in 'item[title]', with: title
+      fill_in 'item[price]', with: price
+      click_on 'Create Item'
+
+      expect(page).to have_content(error)
+    end
+
+    it 'cannot create an item without a title and description' do
+      price = 11.00
+      error = "Item missing title and description"
+
+      admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_new_path
+
+      fill_in 'item[price]', with: price
       click_on 'Create Item'
 
       expect(page).to have_content(error)
