@@ -21,8 +21,9 @@ class HomepagesController < ApplicationController
       @most_ridden_bike = Trip.most_ridden_bike
       @least_ridden_bike = Trip.least_ridden_bike
       total_trips = Trip.all.count
-      require 'pry'; binding.pry
-      @subscription_info = Trip.subscription_count.each { |key, val| return [key, val, ((val/total_trips)*100)]}
+      @subscription_info = Trip.subscription_count.map { |key, val| [key, val, ((val/total_trips.to_f)*100).round(2)] }
+      @date_most_trips = Trip.date_with_most_trips
+      @date_least_trips = Trip.date_with_least_trips
     end
   end
 end
