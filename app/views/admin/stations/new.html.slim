@@ -10,13 +10,13 @@ div class="container-fluid" style="width: 85%;"
         = form.text_field :city, class: "form-control", placeholder: "City", required: true
 
     div class="form-row" style="margin-top: 15px;"
-      div class="col-md-4 mb-3" 
+      div class="col-md-4 mb-3"
         = form.label :dock_count
         = form.number_field :dock_count, class: "form-control", placeholder: "Dock Count", required: true
-    
+
       div class="col-md-4 mb-3" style="margin-top: 25px;"
         = form.label :installation_date
-        = form.date_select :installation_date, class: "form-control" , required: true
+        = form.date_select :installation_date, class: "form-control" , required: true, :prompt => {:year => 'Select Year', :month => 'Select Month', :day => 'Select Day'}
 
     div class="form-row" style="justify-content: center; margin-top: 35px; margin-right: 45px;"
       div class="actions"

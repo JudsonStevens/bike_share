@@ -8,7 +8,7 @@ describe 'Admin' do
       dock_count = 15
 
       admin = User.create(first_name: 'Billy', last_name: 'Williams', address:'123 admin street', username:'admin', password: 'admin', role: 1)
-      
+
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit(new_admin_station_path)
@@ -16,7 +16,9 @@ describe 'Admin' do
       fill_in('station[name]', with: name)
       fill_in('station[city]', with: city)
       fill_in('station[dock_count]', with: dock_count)
-
+      select'2018', from: 'station[installation_date(1i)]'
+      select'May', from: 'station[installation_date(2i)]'
+      select'2', from: 'station[installation_date(3i)]'
       click_on('Create Station')
       expect(current_path).to eq(station_path(Station.last))
 
