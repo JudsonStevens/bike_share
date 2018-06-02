@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @items = @order.item_orders.map { |item_order| { Item.find(item_order.item_id) => item_order.quantity } }
     @order_total = @items.map { |item_hash| item_hash.keys.first.price * item_hash.values.first }.sum
+    @purchaser = @order.user if current_admin?
   end
 
   def create

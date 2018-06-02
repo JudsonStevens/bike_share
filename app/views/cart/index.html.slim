@@ -26,7 +26,7 @@ div class="container-fluid"
             = form_for(:item, url: bike_shop_path, method: :patch) do |f|
               = f.hidden_field(:item_id, value: item.id)
               = f.hidden_field(:quantity, value: 1)
-              = f.button 'Add to Cart', type: "submit"
+              = f.button 'Increase Quantity', type: "submit"
           li
             = form_for(:item, url: bike_shop_path, method: :patch) do |f|
               = f.hidden_field(:item_id, value: item.id)

@@ -22,7 +22,7 @@ describe 'Visitor' do
 
       click_on('Create User')
 
-      expect(current_path).to eq(dashboard_path(User.last))
+      expect(current_path).to eq(dashboard_path)
       expect(page).to have_content(first_name)
       expect(page).to have_content(last_name)
       expect(page).to have_content(username)

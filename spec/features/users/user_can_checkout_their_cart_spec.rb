@@ -65,7 +65,7 @@ describe 'User' do
       expect(page).to have_content("Order ID: #{order.id}")
       expect(page).to have_content('Order Total: $ 250.00')
       expect(page).to have_content("Order Status: #{order.status}")
-      expect(page).to have_content("Order Submitted: #{order.created_at}")
+      expect(page).to have_content("Order Submitted: #{order.created_at.strftime("%A, %m/%d/%Y")}")
     end
 
     it 'can checkout items, click on the new order in their dashboard, and see details about that canceled order' do
@@ -84,7 +84,7 @@ describe 'User' do
 
       click_on("Order ID: #{order1.id}")
 
-      expect(page).to have_content("Order was canceled on #{order1.updated_at}")
+      expect(page).to have_content("Order was canceled on #{order1.updated_at.strftime("%A, %m/%d/%Y")}")
     end
   end
 end
