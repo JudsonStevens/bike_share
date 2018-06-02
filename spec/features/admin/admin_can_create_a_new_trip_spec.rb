@@ -3,8 +3,6 @@ require 'rails_helper'
 describe 'as an admin' do
   it 'can create a new trip' do
     duration = 90
-    start_date = '05/01/2018 14:40:00'
-    end_date = '05/01/2018 16:40:00'
     bike_id = 1
     subscription_type = 'Monthly'
     zip_code = 12345
@@ -20,10 +18,13 @@ describe 'as an admin' do
 
     visit new_admin_trip_path
 
-
     fill_in 'trip[duration]', with: duration
-    fill_in 'trip[start_date]', with: start_date
-    fill_in 'trip[end_date]', with: end_date
+    select '2018', from: 'trip[start_date(1i)]'
+    select'May' , from: 'trip[start_date(2i)]'
+    select '1', from: 'trip[start_date(3i)]'
+    select '2018', from: 'trip[end_date(1i)]'
+    select 'May', from: 'trip[end_date(2i)]'
+    select '2', from: 'trip[end_date(3i)]'
     fill_in 'trip[bike_id]', with: bike_id
     select 'Turing Station', from: 'trip_start_station_id'
     select 'Denver Station', from: 'trip_end_station_id'
