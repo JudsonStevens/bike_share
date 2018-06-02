@@ -1,0 +1,37 @@
+h1
+  'Order ID:
+  = @order.id
+
+div class="container-fluid"
+  div class="row"
+    - @items.each do |item_hash|
+      div class="col-md-3" style="text-align: center;"
+        ul class="item-index-list" style="list-style-type: none;"
+          li
+            'Item Name:
+            = link_to "#{item_hash.keys.first.title}", item_path(item_hash.keys.first)
+          li
+            'Item Quantity:
+            = item_hash.values.first
+          li
+            'Item Subtotal: $
+            = '%.2f' % (item_hash.keys.first.price * item_hash.values.first)
+h2
+  'Total Number of Items
+  = @items.map { |ele| ele.values.first }.sum
+h2 
+  'Order Total: $
+  = '%.2f' % @order_total
+h2
+  'Order Status:
+  = @order.status
+h2
+  'Order Submitted:
+  = @order.created_at.strftime("%A, %m/%d/%Y")
+h2
+  - if @order.status == 'completed'
+    'Order was shipped on 
+    = @order.updated_at
+  -elsif @order.status == 'canceled'
+    'Order was canceled on
+    = @order.updated_at

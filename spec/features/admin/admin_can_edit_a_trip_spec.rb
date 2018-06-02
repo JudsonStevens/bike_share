@@ -27,8 +27,6 @@ describe 'Visit trip show page' do
       click_on 'Edit Trip'
 
       fill_in 'trip[duration]', with: duration
-      fill_in 'trip[start_date]', with: start_date
-      fill_in 'trip[end_date]', with: end_date
       fill_in 'trip[bike_id]', with: bike_id
       select 'Turing Station', from: 'trip_start_station_id'
       select 'During Station', from: 'trip_end_station_id'

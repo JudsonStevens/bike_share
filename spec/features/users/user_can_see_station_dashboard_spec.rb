@@ -11,15 +11,14 @@ describe 'User' do
       visit(stations_dashboard_path)
 
       expect(current_path).to eq(stations_dashboard_path)
-      expect(current_status).to eq(200)
-      expect(page).to have_content("Total Count of Stations: #{Station.all.count}")
-      expect(page).to have_content("Average Bikes Available Per Station: #{Station.average(:dock_count)}")
-      expect(page).to have_content("Most Bikes Available at a Station: #{station3.dock_count}")
-      expect(page).to have_content("Station with the Most Bikes: #{station3.name}")
-      expect(page).to have_content("Fewest Bikes Available at a Station: #{station1.dock_count}")
-      expect(page).to have_content("Station with the Fewest Bikes: #{station1.name}")
-      expect(page).to have_content("Most Recently Installed Station: #{station1.name}")
-      expect(page).to have_content("Oldest Station: #{station3.name}")
+      expect(page).to have_content("#{Station.all.count}")
+      expect(page).to have_content("#{Station.average(:dock_count).round}")
+      expect(page).to have_content("#{station3.dock_count}")
+      expect(page).to have_content("#{station3.name}")
+      expect(page).to have_content("#{station1.dock_count}")
+      expect(page).to have_content("#{station1.name}")
+      expect(page).to have_content("#{station1.name}")
+      expect(page).to have_content("#{station3.name}")
     end
   end
 end

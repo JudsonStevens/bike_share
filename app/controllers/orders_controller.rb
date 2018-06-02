@@ -1,8 +1,13 @@
 class OrdersController < ApplicationController
   def show
-    @order = Order.find(params[:id])
-    @items = @order.item_orders.map { |item_order| { Item.find(item_order.item_id) => item_order.quantity } }
-    @order_total = @items.map { |item_hash| item_hash.keys.first.price * item_hash.values.first }.sum
+    if Order.find_by(id: params[:id]).nil?
+      render file: 'public/404'
+    else
+      @order = Order.find(params[:id])
+      @items = @order.item_orders.map { |item_order| { Item.find(item_order.item_id) => item_order.quantity } }
+      @order_total = @items.map { |item_hash| item_hash.keys.first.price * item_hash.values.first }.sum
+      @purchaser = @order.user if current_admin?
+    end
   end
 
   def create
@@ -16,7 +21,7 @@ class OrdersController < ApplicationController
       return
     else
       session[:flash_notice] = params[:flash_notice]
-      redirect_to dashboard_path(flash_notice: params[:flash_notice])
+      redirect_to dashboard_path
       return
     end
   end

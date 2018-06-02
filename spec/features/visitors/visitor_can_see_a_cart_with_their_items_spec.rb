@@ -53,7 +53,7 @@ describe 'Visitor' do
       page.set_rack_session(shopping_cart: { item1.id => 2} )
 
       visit(cart_path)
-      click_on('Add to Cart')
+      click_on('Increase Quantity')
 
       expect(page).to have_content('Quantity - 3')
     end
@@ -65,7 +65,7 @@ describe 'Visitor' do
 
       visit(cart_path)
 
-      click_on('Remove Item From Cart')
+      click_on('Decrease Quantity')
 
       expect(page).to have_content('Quantity - 1')
     end
