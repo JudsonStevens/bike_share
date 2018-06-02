@@ -2,10 +2,14 @@ h1 Admin Dashboard
 
 =button_to 'Create New Accessory', admin_bike_shop_new_path
 
+
 h2
   = link_to 'Edit Profile Information', edit_user_path(@user)
+  = link_to 'View all Accessories', admin_bike_shop_path
+
 ul
   li
+
     h2
       'Username:
       = @user.username
@@ -22,9 +26,36 @@ ul
       'Address:
       = @user.address
 
-= link_to 'View all Accessories', admin_bike_shop_path
+
 
 ul
   - @orders.each do |order|
     li
       = link_to "Order ID: #{order.id}", order_path(order)
+ul
+  li
+    = link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled')
+  li
+    = link_to 'Ordered Orders', admin_dashboard_path(type: 'ordered')
+  li
+    = link_to 'Paid Orders', admin_dashboard_path(type: 'paid')
+  li
+    = link_to 'Completed Orders', admin_dashboard_path(type: 'completed')
+
+h2 Orders:
+
+ul
+  - @orders.each do |order|
+    li
+      ' Order ID:
+      = link_to "#{order.id}", order_path(order)
+      '  - Status:
+      = link_to "#{order.status}", order_path(order)
+
+      - if order.status == 'ordered'
+        = link_to 'Cancel', admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
+        = link_to "Mark as Paid", admin_order_path(order, "order[status]" => 'paid'), method: :put, type: 'submit'
+
+      - if order.status == 'paid'
+        = link_to "Cancel", admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
+        = link_to "Mark as Completed", admin_order_path(order, "order[status]" => 'completed'), method: :put, type: 'submit'

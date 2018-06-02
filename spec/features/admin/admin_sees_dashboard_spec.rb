@@ -10,7 +10,7 @@ describe 'Admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_dashboard_path(admin)
-
+      save_and_open_page
       expect(page).to have_link('View all Accessories')
       click_on 'View all Accessories'
       expect(current_path).to eq("/admin/bike-shop")
@@ -36,5 +36,44 @@ describe 'Admin' do
       expect(page).to have_button("Retire #{item1.title}")
       expect(page).to have_button("Retire #{item2.title}")
     end
+    it 'should display all orders with order information' do
+      admin = User.create(first_name: 'Albert', last_name: 'Hoffman', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+      order_1 = admin.orders.create(status: 'ordered')
+      order_2 = admin.orders.create(status: 'completed')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_dashboard_path(admin)
+
+
+      expect(page).to have_content("Orders:")
+      save_and_open_page
+      expect(page).to have_content("#{order_1.status}")
+      expect(page).to have_content("#{order_2.status}")
+    end
+    it 'should have links to filter by order type' do
+      admin = User.create(first_name: 'Albert', last_name: 'Hoffman', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+      order_1 = admin.orders.create(status: 'ordered')
+      order_2 = admin.orders.create(status: 'completed')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_dashboard_path(admin)
+      click_on "Completed Orders"
+      expect(page).to have_content(order_2.id)
+    end
+    # it 'should allow admin to change order status' do
+    #   admin = User.create(first_name: 'Albert', last_name: 'Hoffman', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+    #   order_1 = admin.orders.create(status: 'ordered')
+    #   order_2 = admin.orders.create(status: 'completed')
+    #
+    #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    #
+    #   visit admin_dashboard_path(admin)
+    #
+    #   expect(page).to have_link('Cancel')
+    #   expect(page).to have_link('Mark as Paid')
+    #   expect(page).to have_link('Mark as Completed')
+    # end
   end
 end

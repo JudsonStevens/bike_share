@@ -19,7 +19,7 @@ div class="container-fluid"
 h2
   'Total Number of Items
   = @items.map { |ele| ele.values.first }.sum
-h2 
+h2
   'Order Total: $
   = '%.2f' % @order_total
 h2
@@ -30,8 +30,8 @@ h2
   = @order.created_at.strftime("%A, %m/%d/%Y")
 h2
   - if @order.status == 'completed'
-    'Order was shipped on 
+  'Order was shipped on
     = @order.updated_at
-  -elsif @order.status == 'canceled'
-    'Order was canceled on
-    = @order.updated_at
+  - elsif @order.status == 'cancelled'
+    'Order was cancelled on
+      = @order.updated_at

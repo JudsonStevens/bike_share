@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :stations, only: [:new, :create, :destroy, :edit, :update]
     resources :trips
     resources :items
+    resources :orders, only: [:update]
     get '/bike-shop', to: 'items#index'
     get '/dashboard', to: 'dashboards#show'
   end
