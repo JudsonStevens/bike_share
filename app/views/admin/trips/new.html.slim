@@ -4,10 +4,10 @@
   = f.text_field :duration
 
   = f.label :start_date
-  = f.text_field :start_date
+  = f.date_select :start_date, :prompt => {:year => 'Select Year', :month => 'Select Month', :day => 'Select Day'}
 
   = f.label :end_date
-  = f.text_field :end_date
+  = f.date_select :end_date, :prompt => {:year => 'Select Year', :month => 'Select Month', :day => 'Select Day'}
 
   = f.label :bike_id
   = f.text_field :bike_id
