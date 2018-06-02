@@ -1,8 +1,8 @@
-div 
+div
   h1 = @item.title
   p
-    'Price: $
-    = @item.price.to_f.round(2)
+    'Price:
+    = number_to_currency(@item.price.to_f.round(2))
   p
     'Description:
     = @item.description
@@ -19,5 +19,5 @@ div
       / = f.submit 'Add to Cart'
     - if !@item.is_retired?
       = button_to 'Add to Cart', bike_shop_path, type: 'submit', class: 'btn-default', style: '', method: :patch, params: { item: {item_id: "#{@item.id}", quantity: 1}}
-    - else 
+    - else
       p Accesory Retired
