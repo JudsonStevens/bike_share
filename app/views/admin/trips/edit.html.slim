@@ -6,10 +6,10 @@ div class="container-fluid" style="width: 85%;"
         = f.text_field :duration, class: "form-control", required: true
       div class="col-md-4 mb-3" style="margin-top: 25px;"
         = f.label :start_date
-        = f.date_select :start_date
+        = f.date_select :start_date, :prompt => {:year => 'Select Year', :month => 'Select Month', :day => 'Select Day'}
       div class="col-md-4 mb-3" style="margin-top: 25px;"
         = f.label :end_date
-        = f.date_select :end_date
+        = f.date_select :end_date, :prompt => {:year => 'Select Year', :month => 'Select Month', :day => 'Select Day'}
     div class="form-row"
       div class="col-md-4 mb-3"
         = f.label :bike_id
