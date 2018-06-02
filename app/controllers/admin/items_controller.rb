@@ -9,8 +9,6 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-    require 'pry'; binding.pry
-    if params
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been created"
