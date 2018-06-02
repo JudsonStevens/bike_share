@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: session_params[:email])
-    if !user.admin? && user.authenticate(session_params[:password])
+    if !user.nil? && !user.admin? && user.authenticate(session_params[:password])
       log_in(user)
       redirect_to dashboard_path
-    elsif user.admin? && user.authenticate(session_params[:password])
+    elsif !user.nil? && user.admin? && user.authenticate(session_params[:password])
       log_in(user)
       redirect_to admin_dashboard_path
     else
