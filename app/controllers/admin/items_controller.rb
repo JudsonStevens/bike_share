@@ -13,9 +13,11 @@ class Admin::ItemsController < Admin::BaseController
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been created"
+      redirect_to item_path(item)
+    else !item
+      flash[:error] = "Item needs a price greater than zero"
+      redirect_back(fallback_location: root_path)
     end
-
-    redirect_to item_path(item)
   end
 
   def edit
