@@ -9,6 +9,7 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
+    params[:item][:image] = "https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg" if params[:item][:image] == ""
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been created"
