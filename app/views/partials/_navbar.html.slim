@@ -20,8 +20,8 @@ nav class="navbar navbar-default"
         = link_to 'Bike Shop', bike_shop_path
       li class="#{current_class?(stations_dashboard_path)}"
         = link_to 'Station Dashboard', stations_dashboard_path
-      / li class="#{current_class?(trip_dashboard_path)}"
-      /   = link_to 'Trip Dashboard', trip_dashboard_path
+      li class="#{current_class?(trips_dashboard_path)}"
+        = link_to 'Trip Dashboard', trips_dashboard_path
     ul class="nav navbar-nav navbar-right"
       - if current_user && !current_admin?
         li style="margin-top:17px;"

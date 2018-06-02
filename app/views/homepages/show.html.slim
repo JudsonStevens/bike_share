@@ -1,54 +1,153 @@
 - if @station_count
   div class="card-columns" style="text-align:center; column-count: 3;"
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Total Count of Stations:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @station_count
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Average Bikes Available Per Station:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @average_bikes
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Most Bikes Available at a Station:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @most_bikes.dock_count
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Station with the Most Bikes:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @most_bikes.name
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Fewest Bikes Available at a Station:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @least_bikes.dock_count
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Station with the Fewest Bikes:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @least_bikes.name
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Most Recently Installed Station:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @newest_station.name
     div class="card"  
-      div class="card-body" style="height:150px;"
+      div class="card-body"
         h3 class="card-title" 
           'Oldest Station:
-        h5 class="card-text" style="margin-top: 40px;"
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
           = @oldest_station.name
 
-- elsif @trips
-  - @trips.each do |trip|
-    = trip.id
+- elsif @average_ride_length
+  div class="card-columns" style="text-align:center; column-count: 3;"
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Average Duration of a Ride:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @average_ride_length.round
+          '  minutes
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Longest Ride:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @longest_ride
+          '  minutes
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Shortest Ride:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @shortest_ride
+          '  minutes
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Station With the Most Rides as a Starting Station:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @most_start_station.name
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Station With the Most Rides as an Ending Station:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @most_end_station.name
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Breakdown of Rides Using Date:
+        ul style="list-style-type: none;"
+          h5 class="card-text" style="margin-top: 15px;"
+            - @month_breakdown.each do |date, trip_count|
+              li
+                = date.strftime("%B")
+                '  - Count:
+                = trip_count
+          h5 class="card-text" style="margin-top: 5px;"
+            - @year_breakdown.each do |date, trip_count|
+              li
+                = date.strftime("%Y")
+                '  Total Rides:
+                = trip_count
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Most Ridden Bike:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          'Bike ID:
+          = @most_ridden_bike[0]
+          '  - Count of Rides:
+          = @most_ridden_bike[1]
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Least Ridden Bike:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          'Bike ID:
+          = @least_ridden_bike[0]
+          '  - Count of Rides:
+          = @least_ridden_bike[1]
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'User Subscription Type Breakdown:
+        ul style="list-style-type: none;"
+          h5 class="card-text" style="margin-top: 15px;"
+            - @subscription_info.each do |element|
+              li
+                'Type:
+                =  element[0]
+                '  - Count:
+                = element[1]
+                '  - Percentage of Total:
+                = element[2]
+                '%
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Date With Highest Number of Trips:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @date_most_trips.first.strftime("%A, %m/%d/%Y")
+          '  - Count:
+          = @date_most_trips.last
+    div class="card"  
+      div class="card-body" style=""
+        h3 class="card-title" 
+          'Date With Lowest Number of Trips:
+        h5 class="card-text" style="margin-top: 40px; margin-bottom: 20px;"
+          = @date_least_trips.first.strftime("%A, %m/%d/%Y")
+          '  - Count:
+          = @date_least_trips.last
+
