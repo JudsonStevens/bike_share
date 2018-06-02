@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_06_02_183448) do
     t.string "image"
     t.text "description"
     t.boolean "is_retired?", default: false
-    t.decimal "price", precision: 8, scale: 2
+    t.decimal "price", precision: 14, scale: 2
   end
 
   create_table "orders", force: :cascade do |t|

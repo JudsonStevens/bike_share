@@ -11,21 +11,15 @@ class Admin::ItemsController < Admin::BaseController
   def create
     params[:item][:image] = "https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg" if params[:item][:image] == ""
     item = Item.new(item_params)
-    params
+    # require 'pry'; binding.pry
     if item.save
       flash[:success] = "#{item.title} has been created"
       redirect_to item_path(item)
-    elsif (params[:item][:title] == "") && (params[:item][:description] == "")
-      flash[:error] = "Item missing title and description"
-      redirect_back(fallback_location: root_path)
-    elsif params[:item][:title]== ""
-      flash[:error] = "Item missing title"
-      redirect_back(fallback_location: root_path)
-    elsif params[:item][:description]== ""
-      flash[:error] = "Item missing description"
-      redirect_back(fallback_location: root_path)
-    else params[:item][:price].to_f > 0
+    elsif params[:item][:price].to_f <= 0
       flash[:error] = "Item needs a price greater than zero"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:error] = "Item must have unique title"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -33,7 +27,6 @@ class Admin::ItemsController < Admin::BaseController
   def edit
     @item = Item.find(params[:id])
   end
-
 
   def update
     params["item"]["is_retired?"] = (params["item"]["is_retired?"])
