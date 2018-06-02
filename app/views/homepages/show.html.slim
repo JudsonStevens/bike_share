@@ -49,6 +49,94 @@
         h5 class="card-text" style="margin-top: 40px;"
           = @oldest_station.name
 
-- elsif @trips
-  - @trips.each do |trip|
-    = trip.id
+- elsif @average_ride_length
+  div class="card-columns" style="text-align:center; column-count: 3;"
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Average Duration of a Ride:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @average_ride_length.round
+          '  minutes
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Longest Ride:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @longest_ride
+          '  minutes
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Shortest Ride:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @shortest_ride
+          '  minutes
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Station With the Most Rides as a Starting Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @most_start_station.name
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Station With the Most Rides as an Ending Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @most_end_station.name
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Breakdown of Rides Using Date:
+        ul style="list-style-type: none;"
+          h5 class="card-text" style="margin-top: 15px;"
+            - @month_breakdown.each do |date, trip_count|
+              li
+                = date.strftime("%B")
+                '  - Count:
+                = trip_count
+          h5 class="card-text" style="margin-top: 5px;"
+            - @year_breakdown.each do |date, trip_count|
+              li
+                = date.strftime("%Y")
+                '  Total Rides:
+                = trip_count
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Most Ridden Bike:
+        h5 class="card-text" style="margin-top: 40px;"
+          'Bike ID:
+          = @most_ridden_bike[0]
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Least Ridden Bike:
+        h5 class="card-text" style="margin-top: 40px;"
+          'Bike ID:
+          = @least_ridden_bike[0]
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'User Subscription Type Breakdown:
+        h5 class="card-text" style="margin-top: 40px;"
+          - @subscription_info.each do |element|
+            'Type:
+            =  element[0]
+            '  - Count:
+            = element[1]
+            '  - Percentage of Total:
+            = element[2]
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Date With Highest Number of Trips:
+        h5 class="card-text" style="margin-top: 40px;"
+          = 
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Date With Lowest Number of Trips:
+        h5 class="card-text" style="margin-top: 40px;"
+          = 
+
