@@ -3,12 +3,28 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params)
+      flash[:success] = "You have updated your profile!"
+    end
+    if current_admin?
+      redirect_to admin_dashboard_path
+    else
+      redirect_to dashboard_path
+    end
+  end
+
   def create
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
         log_in(@user)
-        format.html { redirect_to dashboard_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'User was successfully created.' }
       else
         format.html { render :new }
       end
@@ -17,7 +33,10 @@ class UsersController < ApplicationController
 
   def show
     if current_user
-      flash.now[:success] = session[:flash_notice] if session[:flash_notice]
+      if session[:flash_notice]
+        flash.now[:success] = session[:flash_notice]
+        session[:flash_notice] = nil
+      end
       @user = User.find(current_user.id)
       @orders = @user.orders
     else

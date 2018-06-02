@@ -1,11 +1,8 @@
 div 
   h1 = @item.title
-  - if @item.is_retired? == true
-    p Accesory Retired
-  - else
   p
-    'Price:
-    = @item.price.to_f
+    'Price: $
+    = @item.price.to_f.round(2)
   p
     'Description:
     = @item.description
@@ -20,4 +17,7 @@ div
       /   = f.number_field :quantity, options = {max: 25, min: 0}
 
       / = f.submit 'Add to Cart'
-    = button_to 'Add to Cart', bike_shop_path, type: 'submit', class: 'btn-default', style: '', method: :patch, params: { item: {item_id: "#{@item.id}", quantity: 1}}
+    - if !@item.is_retired?
+      = button_to 'Add to Cart', bike_shop_path, type: 'submit', class: 'btn-default', style: '', method: :patch, params: { item: {item_id: "#{@item.id}", quantity: 1}}
+    - else 
+      p Accesory Retired

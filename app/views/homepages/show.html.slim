@@ -1,0 +1,54 @@
+- if @station_count
+  div class="card-columns" style="text-align:center; column-count: 3;"
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Total Count of Stations:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @station_count
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Average Bikes Available Per Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @average_bikes
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Most Bikes Available at a Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @most_bikes.dock_count
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Station with the Most Bikes:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @most_bikes.name
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Fewest Bikes Available at a Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @least_bikes.dock_count
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Station with the Fewest Bikes:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @least_bikes.name
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Most Recently Installed Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @newest_station.name
+    div class="card"  
+      div class="card-body" style="height:150px;"
+        h3 class="card-title" 
+          'Oldest Station:
+        h5 class="card-text" style="margin-top: 40px;"
+          = @oldest_station.name
+
+- elsif @trips
+  - @trips.each do |trip|
+    = trip.id

@@ -25,16 +25,19 @@ class Admin::StationsController < Admin::BaseController
     station = Station.friendly.find(params[:id])
     params[:station][:installation_date] = "#{params[:station]["installation_date(2i)"]}/#{params[:station]["installation_date(3i)"]}/#{params[:station]["installation_date(1i)"]}"
     if station.update(station_params)
-      flash[:success] = "You have updated station-#{station.name}!"
+      flash[:success] = "You have updated #{station.name} station!"
     end
     redirect_to station_path(station)
   end
 
   def destroy
     station = Station.friendly.find(params[:id])
-    if station.destroy
-      flash[:success] = "station-#{station.id} has been deleted!"
+    trips = Trip.where("end_station_id=? OR start_station_id=?", station.id, station.id)
+    trips.each do |trip|
+      trip.destroy
     end
+    station.destroy
+    flash[:success] = "#{station.name} was successfully deleted!"
     redirect_to stations_path
   end
 

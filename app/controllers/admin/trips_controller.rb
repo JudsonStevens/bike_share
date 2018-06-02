@@ -23,8 +23,8 @@ class Admin::TripsController < Admin::BaseController
 
   def update
     trip = Trip.find(params[:id])
-    params["trip"]["start_date"] = Time.strptime(params["trip"]["start_date"], "%m/%d/%Y") if params["trip"]["start_date"]
-    params["trip"]["end_date"] = Time.strptime(params["trip"]["end_date"], "%m/%d/%Y") if params["trip"]["end_date"]
+    params[:trip][:start_date] = "#{params[:trip]["start_date(2i)"]}/#{params[:trip]["start_date(3i)"]}/#{params[:trip]["start_date(1i)"]}"
+    params[:trip][:end_date] = "#{params[:trip]["end_date(2i)"]}/#{params[:trip]["end_date(3i)"]}/#{params[:trip]["end_date(1i)"]}"
     if trip.update(trip_params)
       flash[:success] = "You have updated Trip-#{Trip.find(params[:id]).id}!"
     end

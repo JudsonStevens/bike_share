@@ -9,6 +9,8 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
+    require 'pry'; binding.pry
+    if params
     item = Item.new(item_params)
     if item.save
       flash[:success] = "#{item.title} has been created"
@@ -34,7 +36,6 @@ class Admin::ItemsController < Admin::BaseController
         flash[:success] = "You have updated #{item.title}"
       end
     end
-
     redirect_to admin_bike_shop_path
   end
 
