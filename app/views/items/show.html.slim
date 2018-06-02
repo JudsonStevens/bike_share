@@ -2,7 +2,7 @@ div
   h1 = @item.title
   p
     'Price:
-    = number_to_currency(@item.price)
+    = number_to_currency(@item.price.to_f.round(2))
   p
     'Description:
     = @item.description

@@ -16,7 +16,7 @@ describe 'As an admin' do
 
     it 'can create a new accessory' do
       title = "Jeff Goldblum"
-      price = 1_000_000.00
+      price = 100.00
       description = 'Jeff Goldblum is a tryranasarous'
       image = 'https://cdn.movieweb.com/img.news.tops/NE3SJdAlaqpY6b_1_b/Jurassic-Park-Jeff-Goldblum-Explains-Shirtless-Scene.jpg'
 
@@ -44,7 +44,7 @@ describe 'As an admin' do
 
     it 'uses place-holder image if none provided during creation' do
       title = "Jeff Goldblum"
-      price = 1_000_000.00
+      price = 100.00
       description = 'Jeff Goldblum is a tryranasarous'
       placeholder = 'https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg'
 
@@ -64,6 +64,27 @@ describe 'As an admin' do
       expect(current_path).to eq(item_path(item))
 
       expect(item.image).to eq(placeholder)
+    end
+
+    it 'cannot create an item that is less than zero' do
+      title = "Jeff Goldblum"
+      price = -1.00
+      description = 'Jeff Goldblum is a tryranasarous'
+      placeholder = 'https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg'
+      error = "Item needs a price greater than zero"
+
+      admin = User.create(first_name: 'Gertrude', last_name: 'McGillicuddy', address:'123 admin street', username:'admin', password: 'admin', role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_new_path
+
+      fill_in 'item[title]', with: title
+      fill_in 'item[price]', with: price
+      fill_in 'item[description]', with: description
+      click_on 'Create Item'
+
+      expect(page).to have_content(error)
     end
   end
 end

@@ -4,7 +4,7 @@
   = f.text_field :title
 
   = f.label :price
-  = f.number_field :price, input_html: {min:'0.01'}
+  = f.number_field :price, :step => 0.01
 
   = f.label :image
   = f.text_field :image
