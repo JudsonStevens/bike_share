@@ -11,7 +11,7 @@ describe 'Admin' do
 
       visit admin_dashboard_path(admin)
 
-      expect(page).to have_link('View all Accessories')
+      expect(page).to have_button('View all Accessories')
       click_on 'View all Accessories'
       expect(current_path).to eq("/admin/bike-shop")
 
