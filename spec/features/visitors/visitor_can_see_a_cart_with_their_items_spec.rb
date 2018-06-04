@@ -70,6 +70,18 @@ describe 'Visitor' do
       expect(page).to have_content('Quantity - 1')
     end
 
+    it 'cannot descrease the quantity of an item if it is 1' do
+      item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
+
+      decrease = 'Decrease Quantity'
+
+      page.set_rack_session(shopping_cart: { item1.id => 1} )
+
+      visit(cart_path)
+
+      expect(page).to_not have_content(decrease)
+    end
+
     it 'can click on checkout and be taken to the login page' do
       item1 = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes')
       item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')

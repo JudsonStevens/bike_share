@@ -17,10 +17,12 @@ class OrdersController < ApplicationController
     end
     if current_admin?
       session[:flash_notice] = params[:flash_notice]
+      session[:shopping_cart] = nil
       redirect_to admin_dashboard_path
       return
     else
       session[:flash_notice] = params[:flash_notice]
+      session[:shopping_cart] = nil
       redirect_to dashboard_path
       return
     end
