@@ -3,10 +3,10 @@ div class="container-fluid"
     - @items.each do |item|
       div class="col-md-3" style="text-align: center;"
         ul class="item-index-list" style="list-style-type: none;"
-          li
+          li style="margin-top: 25px; margin-bottom: 15px;"
             = link_to item.title, item_path(item.id)
           li
-            = image_tag("#{item.image}")
+            = image_tag("#{item.image}", style: "height: 250px; width: 250px;")
           li
             = item.description
           li
