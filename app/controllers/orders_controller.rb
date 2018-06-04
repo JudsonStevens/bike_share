@@ -1,12 +1,12 @@
 class OrdersController < ApplicationController
   def show
-    if Order.find_by(id: params[:id]).nil?
+    @order = Order.find(params[:id])
+    if @order.nil?
       render file: 'public/404'
     else
-      @order = Order.find(params[:id])
       @items = @order.item_orders.map { |item_order| { Item.find(item_order.item_id) => item_order.quantity } }
       @order_total = @items.map { |item_hash| item_hash.keys.first.price * item_hash.values.first }.sum
-      @purchaser = @order.user if current_admin?
+      @purchaser = @order.user
     end
   end
 

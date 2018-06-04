@@ -9,7 +9,7 @@ describe 'Visitor' do
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
 
       visit(bike_shop_path)
-      
+
       expect(page).to have_content(item1.description)
       expect(page).to have_content(item2.description)
       expect(page).to have_content(item3.description)
@@ -42,6 +42,16 @@ describe 'Visitor' do
 
       expect(page).to have_content("You have added #{item1.title} to your cart!")
       expect(page).to have_content('Shopping Cart - 1')
+    end
+
+    it 'sees Item retired instead of add to cart' do
+        item = Item.create(price: 15.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes', title: 'Bike Limes', is_retired?: true)
+        retired = 'Item Retired'
+
+        visit(bike_shop_path)
+
+        expect(page).to have_content(retired)
+
     end
   end
 end

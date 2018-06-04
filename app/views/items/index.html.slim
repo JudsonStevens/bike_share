@@ -12,11 +12,14 @@ div class="container-fluid"
           li
             '$
             = '%.2f' % item.price
-          li 
-            = form_for(:item, url: bike_shop_path, method: :patch) do |f|
-              = f.hidden_field(:item_id, value: item.id)
-              = f.hidden_field(:quantity, value: 1)
-              = f.button 'Add to Cart', type: "submit"
+          li
+            - if !item.is_retired?
+              = form_for(:item, url: bike_shop_path, method: :patch) do |f|
+                = f.hidden_field(:item_id, value: item.id)
+                = f.hidden_field(:quantity, value: 1)
+                = f.button 'Add to Cart', type: "submit"
+            - else
+              p Item Retired
           / li
           /   = form_for(:item, url: bike_shop_path, method: :delete) do |f|
           /     = f.hidden_field(:item_id, value: item.id)
