@@ -1,4 +1,4 @@
-- if current_user.orders.include?(@order)
+- if current_admin? || current_user.orders.include?(@order)
 
   - if current_admin?
     h1
@@ -40,12 +40,12 @@
     'Order Submitted:
     = @order.created_at.strftime("%A, %m/%d/%Y")
   h2
-    - if @order.status == 'completed'
-      'Order was shipped on
-      = @order.updated_at.strftime("%A, %m/%d/%Y")
-    -elsif @order.status == 'canceled'
-      'Order was canceled on
-      = @order.updated_at.strftime("%A, %m/%d/%Y")
+  - if @order.status == 'completed'
+    'Order was shipped on
+    = @order.updated_at.strftime("%A, %m/%d/%Y")
+  -elsif @order.status == 'canceled'
+    'Order was canceled on
+    = @order.updated_at.strftime("%A, %m/%d/%Y")
 
-    - else
-      = render file: 'public/404'
+- else
+  = render file: 'public/404'
