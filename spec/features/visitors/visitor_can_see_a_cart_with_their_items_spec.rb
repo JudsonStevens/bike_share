@@ -80,7 +80,6 @@ describe 'Visitor' do
       visit(cart_path)
 
       expect(page).to_not have_content(decrease)
-
     end
 
     it 'can click on checkout and be taken to the login page' do
