@@ -7,4 +7,20 @@ class Order < ApplicationRecord
   def self.status_count(status)
     where(status: status).count
   end
+
+  def self.ordered
+    where(status: 'ordered')
+  end
+
+  def self.cancelled
+    where(status: 'cancelled')
+  end
+
+  def self.completed
+    where(status: 'completed')
+  end
+
+  def self.paid
+    where(status: 'paid')
+  end 
 end
