@@ -1,5 +1,4 @@
 class Admin::DashboardsController < Admin::BaseController
-
   def show
     if session[:flash_notice]
       flash.now[:success] = session[:flash_notice]

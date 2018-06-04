@@ -1,5 +1,5 @@
 div class="container-fluid" style="width: 85%;"
-  = form_for([:admin, @trip], html: { class: "needs-validation" }) do |f|
+  = form_for([:admin, @trip], method: :patch, html: { class: "needs-validation" }) do |f|
     div class="form-row"
       div class="col-md-4 mb-3"
         = f.label :duration

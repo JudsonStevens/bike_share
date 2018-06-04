@@ -43,7 +43,7 @@
   - if @order.status == 'completed'
     'Order was shipped on
     = @order.updated_at.strftime("%A, %m/%d/%Y")
-  -elsif @order.status == 'canceled'
+  -elsif @order.status == 'cancelled'
     'Order was canceled on
     = @order.updated_at.strftime("%A, %m/%d/%Y")
 

@@ -1,15 +1,15 @@
-= form_for [:admin, @item] do |f|
+  div class="container-fluid" style="width: 85%;"
+    = form_for [:admin, @item], method: :patch, html: { class: "needs-validation", style: "width: 85%;"} do |f|
+      = f.label :title
+      = f.text_field :title, class: "form-control", required: true
 
-  = f.label :title
-  = f.text_field :title
+      = f.label :price
+      = f.number_field :price, :step => 0.01, class: 'form-control', required: true
 
-  = f.label :price
-  = f.number_field :price
+      = f.label :image
+      = f.text_field :image, class: 'form-control'
 
-  = f.label :image
-  = f.text_field :image
+      = f.label :description
+      = f.text_field :description, class: 'form-control', required: true
 
-  = f.label :description
-  = f.text_field :description
-
-  = f.submit
+      = f.submit
