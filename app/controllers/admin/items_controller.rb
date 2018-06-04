@@ -11,7 +11,6 @@ class Admin::ItemsController < Admin::BaseController
   def create
     params[:item][:image] = "https://images-na.ssl-images-amazon.com/images/I/41gvKImzHqL.jpg" if params[:item][:image] == ""
     item = Item.new(item_params)
-    # require 'pry'; binding.pry
     if item.save
       flash[:success] = "#{item.title} has been created"
       redirect_to item_path(item)
