@@ -8,6 +8,6 @@ class StationsController < ApplicationController
   end
 
   def index
-    @stations = Station.all
+    @stations = Station.sort_by_id
   end
 end

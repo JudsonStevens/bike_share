@@ -6,6 +6,10 @@ class Station < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates_presence_of :dock_count, :city, :installation_date
 
+  def self.sort_by_id
+    all.order(:id)
+  end
+
   def sum_starting_trips
     start_stations.length
   end

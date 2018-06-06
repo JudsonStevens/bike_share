@@ -5,6 +5,10 @@ class Trip < ApplicationRecord
   validates_presence_of :duration, :start_date, :end_date, :start_station_id, :end_station_id, :subscription_type
   validates :bike_id, presence: true
 
+  def self.sort_by_id
+    all.order(:id).includes(:end_station, :start_station)
+  end
+
   def self.average_ride_duration
     average(:duration)
   end

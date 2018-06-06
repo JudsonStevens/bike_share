@@ -34,7 +34,7 @@ describe 'User' do
 
       click_on('Check Out')
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content(empty)
+      expect(page).to have_content("Empty")
     end
 
     it 'can checkout items and see the new order on its dashboard' do
@@ -90,7 +90,7 @@ describe 'User' do
       item2 = Item.create(price: 22.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x2', title: 'Bike Limes Twice')
       item3 = Item.create(price: 11.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x3', title: 'Bike Limes Thrice')
       item4 = Item.create(price: 8.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x4', title: 'Bike Limes Quad')
-      order1 = user1.orders.create(status: "canceled")
+      order1 = user1.orders.create(status: "cancelled")
 
       page.set_rack_session(shopping_cart: { item1.id => 2, item2.id => 5, item3.id => 10 } )
 
@@ -100,7 +100,7 @@ describe 'User' do
 
       click_on("Order ID: #{order1.id}")
 
-      expect(page).to have_content("Order was canceled on #{order1.updated_at.strftime("%A, %m/%d/%Y")}")
+      expect(page).to have_content("Order was cancelled on #{order1.updated_at.strftime("%A, %m/%d/%Y")}")
     end
   end
 end

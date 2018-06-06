@@ -1,26 +1,43 @@
 - if current_user.nil?
   = redirect_to login_path, notice: 'You must log in to do that!'
+
 - else
-  h2
-    = link_to 'Edit Profile Information', edit_user_path(@user)
-  ul
-    li
-      h2 
-        'Username:
-        = @user.username
-    li
-      h2 
-        'First Name:
-        = @user.first_name
-    li
-      h2 
-        'Last Name:
-        = @user.last_name
-    li
-      h2 
-        'Address:
-        = @user.address
-  ul
-    - @orders.each do |order|
-      li
-        = link_to "Order ID: #{order.id}", order_path(order)
+  div class="container-fluid" style="margin-left: 25px; margin-right: 25px;"
+    div class="row"
+      div class="col-sm-12"
+        h1
+          = current_user.first_name
+          |'s Dashboard
+    div class="row" style="width: 100%;"
+      div class="col-sm-3"
+        ul class="list-group"
+          li class="list-group-item text-muted" contenteditable="false"
+            'Profile Information
+          li class="list-group-item"
+            = button_to 'Edit Profile Information', edit_user_path(@user), method: :get, class: "btn btn-primary"
+          li class="list-group-item text-right"
+            span class="pull-left"
+              strong Username
+            = @user.username
+          li class="list-group-item text-right"
+            span class="pull-left"
+              strong First Name
+            = @user.first_name
+          li class="list-group-item text-right"
+            span class="pull-left"
+              strong Last Name
+            = @user.last_name
+          li class="list-group-item text-right"
+            span class="pull-left"
+              strong Address
+            = @user.address
+      div class="col-sm-3" contenteditable="false"
+        div class="panel panel-default"
+          div class="panel-heading"
+            h3 Personal Orders
+          div class="panel-body"
+            - @orders.each do |order|
+              p
+                = link_to "Order ID: #{order.id}", order_path(order)
+
+        

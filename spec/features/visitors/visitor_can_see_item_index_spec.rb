@@ -41,7 +41,7 @@ describe 'Visitor' do
       first('form').click_button('Add to Cart', match: :first)
 
       expect(page).to have_content("You have added #{item1.title} to your cart!")
-      expect(page).to have_content('Shopping Cart - 1')
+      expect(page).to have_content('Cart - 1')
     end
 
     it 'sees Item retired instead of add to cart' do

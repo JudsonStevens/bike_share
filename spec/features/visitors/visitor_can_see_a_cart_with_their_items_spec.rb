@@ -24,7 +24,7 @@ describe 'Visitor' do
       expect(page).to have_content('Quantity - 10')
       expect(page).to have_content('Quantity - 5')
 
-      expect(page).to have_content('Shopping Cart - 17')
+      expect(page).to have_content('Cart - 17')
 
       expect(page).to have_content('Subtotal - $ 30.00')
       expect(page).to have_content('Subtotal - $ 110.00')
@@ -132,7 +132,7 @@ describe 'Visitor' do
       expect(page).to have_content('Quantity - 10')
       expect(page).to have_content('Quantity - 5')
 
-      expect(page).to have_content('Shopping Cart - 17')
+      expect(page).to have_content('Cart - 17')
 
       expect(page).to have_content('Subtotal - $ 30.00')
       expect(page).to have_content('Subtotal - $ 110.00')

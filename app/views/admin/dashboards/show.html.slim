@@ -1,71 +1,128 @@
-h1 Admin Dashboard
+div class="container-fluid" style="margin-left: 25px; margin-right: 25px;"
+  div class="row"
+    div class="col-sm-12"
+      h1
+        = current_user.first_name
+        |'s Dashboard
+  div class="row" style="width: 100%;"
+    div class="col-sm-3"
+      ul class="list-group"
+        li class="list-group-item text-muted" contenteditable="false"
+          'Profile Information
+        li class="list-group-item"
+          = button_to 'Edit Profile Information', edit_user_path(@user), method: :get, class: "btn btn-primary"
+        li class="list-group-item text-right"
+          span class="pull-left"
+            strong Username
+          = @user.username
+        li class="list-group-item text-right"
+          span class="pull-left"
+            strong First Name
+          = @user.first_name
+        li class="list-group-item text-right"
+          span class="pull-left"
+            strong Last Name
+          = @user.last_name
+        li class="list-group-item text-right"
+          span class="pull-left"
+            strong Address
+          = @user.address
+        li class="list-group-item"
+          = button_to 'View all Accessories', admin_bike_shop_path, method: :get, class: "btn btn-primary"
+          = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary", style: "margin-top: 15px;"
 
+    div class="col-sm-3" contenteditable="false"
+      div class="panel panel-default"
+        div class="panel-heading"
+          h3 Personal Orders
+        div class="panel-body"
+          - @personal_orders.each do |order|
+            p
+              = link_to "Order ID: #{order.id}", order_path(order)
+    div class="col-sm-6" contenteditable="false"
+      div class="panel panel-default"
+        div class="panel-heading"
+          div class="row"
+            h3 
+              'Orders
+            h5
+              = link_to 'All Orders', admin_dashboard_path, method: :get, class: "btn btn-primary", style: "margin-top: 5px; margin-left: 10px;"
+            h5
+              = link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled'), method: :get, class: "btn btn-secondary", style: "margin-top: 5px; margin-left: 10px;"
+            h5
+              = link_to 'Ordered Orders', admin_dashboard_path(type: 'ordered'), method: :get, class: "btn btn-secondary", style: "margin-top: 5px; margin-left: 10px;"
+            h5
+              = link_to 'Paid Orders', admin_dashboard_path(type: 'paid'), method: :get, class: "btn btn-secondary", style: "margin-top: 5px; margin-left: 10px;"
+            h5
+              = link_to 'Completed Orders', admin_dashboard_path(type: 'completed'), method: :get, class: "btn btn-secondary", style: "margin-top: 5px; margin-left: 10px;"
+          li
+            '  Amount of Orders with Status "Cancelled":
+            = @cancelled
+          li
+            '  Amount of Orders with Status "Ordered":
+            = @ordered
+          li
+            '  Amount of Orders with Status "Paid":
+            = @paid
+          li
+            '  Amount of Orders with Status "Completed":
+            = @completed
+        div class="panel-body"
+          - @orders.each do |order|
+            div class="row" style="margin-top: 5px;"
+              = link_to "Order ID: #{order.id}", order_path(order)
+              '  - Status:
+              = link_to "#{order.status}", order_path(order)
+              - if order.status == 'ordered'
+                = button_to 'Cancel', admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit', style: "margin-left: 10px;"
+                = button_to "Mark as Paid", admin_order_path(order, "order[status]" => 'paid'), method: :put, type: 'submit', style: "margin-left: 10px;"
 
-h2
-  = link_to 'Edit Profile Information', edit_user_path(@user)
+              - if order.status == 'paid'
+                = button_to "Cancel", admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit', style: "margin-left: 10px;"
+                = button_to "Mark as Completed", admin_order_path(order, "order[status]" => 'completed'), method: :put, type: 'submit', style: "margin-left: 10px;"
 
-ul
-  li
+/ ul
+/   - @personal_orders.each do |order|
+/     li
+/       = link_to "Order ID: #{order.id}", order_path(order)
 
-    h2
-      'Username:
-      = @user.username
-  li
-    h2
-      'First Name:
-      = @user.first_name
-  li
-    h2
-      'Last Name:
-      = @user.last_name
-  li
-    h2
-      'Address:
-      = @user.address
+/ h2
+/   = button_to 'View all Accessories', admin_bike_shop_path, method: :get, class: "btn btn-primary"
 
+/   = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary"
+/ ul
+/   li
+/     = link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled')
+/     '  Amount of Orders with Status "Cancelled":
+/     = @cancelled
+/   li
+/     = link_to 'Ordered Orders', admin_dashboard_path(type: 'ordered')
+/     '  Amount of Orders with Status "Ordered":
+/     = @ordered
+/   li
+/     = link_to 'Paid Orders', admin_dashboard_path(type: 'paid')
+/     '  Amount of Orders with Status "Paid":
+/     = @paid
+/   li
+/     = link_to 'Completed Orders', admin_dashboard_path(type: 'completed')
+/     '  Amount of Orders with Status "Completed":
+/     = @completed
 
-ul
-  - @personal_orders.each do |order|
-    li
-      = link_to "Order ID: #{order.id}", order_path(order)
+/ h2 All Bike Shop Orders:
 
-h2
-  = button_to 'View all Accessories', admin_bike_shop_path, method: :get, class: "btn btn-primary"
+/ = button_to 'All Orders', admin_dashboard_path, method: :get, class: "btn btn-primary"
+/ ul
+/   - @orders.each do |order|
+/     li
+/       ' Order ID:
+/       = link_to "#{order.id}", order_path(order)
+/       '  - Status:
+/       = link_to "#{order.status}", order_path(order)
 
-  = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary"
-ul
-  li
-    = link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled')
-    '  Amount of Orders with Status "Cancelled":
-    = @cancelled
-  li
-    = link_to 'Ordered Orders', admin_dashboard_path(type: 'ordered')
-    '  Amount of Orders with Status "Ordered":
-    = @ordered
-  li
-    = link_to 'Paid Orders', admin_dashboard_path(type: 'paid')
-    '  Amount of Orders with Status "Paid":
-    = @paid
-  li
-    = link_to 'Completed Orders', admin_dashboard_path(type: 'completed')
-    '  Amount of Orders with Status "Completed":
-    = @completed
+/       - if order.status == 'ordered'
+/         = link_to 'Cancel', admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
+/         = link_to "Mark as Paid", admin_order_path(order, "order[status]" => 'paid'), method: :put, type: 'submit'
 
-h2 All Bike Shop Orders:
-
-= button_to 'All Orders', admin_dashboard_path, method: :get, class: "btn btn-primary"
-ul
-  - @orders.each do |order|
-    li
-      ' Order ID:
-      = link_to "#{order.id}", order_path(order)
-      '  - Status:
-      = link_to "#{order.status}", order_path(order)
-
-      - if order.status == 'ordered'
-        = link_to 'Cancel', admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
-        = link_to "Mark as Paid", admin_order_path(order, "order[status]" => 'paid'), method: :put, type: 'submit'
-
-      - if order.status == 'paid'
-        = link_to "Cancel", admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
-        = link_to "Mark as Completed", admin_order_path(order, "order[status]" => 'completed'), method: :put, type: 'submit'
+/       - if order.status == 'paid'
+/         = link_to "Cancel", admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit'
+/         = link_to "Mark as Completed", admin_order_path(order, "order[status]" => 'completed'), method: :put, type: 'submit'
