@@ -1,65 +1,67 @@
-- if @station.start_stations != [] || @station.end_stations != []
+div class="well" style="text-align: center;"
   h2
-    ul
-      li
-        'Name:
-        = @station.name
-      li
-        'Dock Count:
-        = @station.dock_count
-      li
-        'City:
-        = @station.city
-      li
-        'Installation Date:
-        = @station.installation_date.strftime("%A, %m/%d/%Y")
-
-  - if current_admin?
-    = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
-    = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'
-
-  h2 Station Statistics
-
-  div class="container-fluid"
-    ul class="station-statistics-list"
-      h4
-        li
+    'Station Name:
+    = @station.name
+div class="col-lg-4"
+div class="col-lg-4"
+  div class="well well-sm" style="text-align: center;"
+    h5
+      'Dock Count:
+      = @station.dock_count
+  div class="well well-sm" style="text-align: center;"
+    h5
+      'City:
+      = @station.city
+  div class="well well-sm" style="text-align: center;"
+    h5
+      'Installation Date:
+      = @station.installation_date.strftime("%A, %m/%d/%Y")
+- if current_admin?
+  = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
+  = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'
+- if @station.start_stations != [] && @station.end_stations != []
+  div class="col-lg-4" style="height: 225px;"
+  h1 Station Statistics
+  div class="card-columns" style="text-align:center; column-count: 3;"
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
           'Number of Trips Starting at This Station:
+        h5 class="card-text"
           = @station.sum_starting_trips
-        li
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
           'Number of Trips Ending at This Station:
+        h5 class="card-text"
           = @station.sum_ending_trips
-        li
-          'Most Frequent Destination Station from Here:
-          = @frequent_destination
-        li
-          'Most Frequent Origination Station for Trips to Here:
-          = @frequent_origination
-        li
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
           'Date With the Highest Number of Starting Trips:
+        h5 class="card-text"
           = @station.date_with_most_trip_starts.strftime("%A, %m/%d/%Y")
-        li
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
+          'Most Frequent Destination Station from Here:
+        h5 class="card-text"
+          = @frequent_destination
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
+          'Most Frequent Origination Station for Trips to Here:
+        h5 class="card-text"
+          = @frequent_origination
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
           'Most Frequent Zip Codes for Users Starting Trips at this Station:
+        h5 class="card-text"
           = @station.most_freq_zip_codes
-        li
+    div class="card"  
+      div class="card-body"
+        h3 class="card-title" 
           'Most Frequent Bike ID Starting Trips Here:
+        h5 class="card-text"
           = @station.most_freq_bike_id
-- else
-  h2
-    ul
-      li
-        'Name:
-        = @station.name
-      li
-        'Dock Count:
-        = @station.dock_count
-      li
-        'City:
-        = @station.city
-      li
-        'Installation Date:
-        = @station.installation_date.strftime("%A, %m/%d/%Y")
-
-  - if current_admin?
-    = link_to 'Edit This Station', edit_admin_station_path(@station), class: 'btn btn-primary'
-    = link_to 'Delete This Station', admin_station_path(@station), method: :delete, class: 'btn btn-primary'

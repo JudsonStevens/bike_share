@@ -1,32 +1,43 @@
 
-h1
-  'Trip
-  = @trip.id
-  p
-    'Duration:
-    = @trip.duration
-    '  minutes
-  p
-    'Start Date:
-    = @trip.start_date.strftime("%A, %m/%d/%Y")
-  p
-    'End Date:
-    = @trip.end_date.strftime("%A, %m/%d/%Y")
-  p
-    'Start Station:
-    = @trip.start_station.name
-  p
-    'End Station:
-    = @trip.end_station.name
-  p
-    'Bike Id:
-    = @trip.bike_id
-  p
-    'Subscription Type:
-    = @trip.subscription_type
-  p
-    'Zip Code:
-    = @trip.zip_code
+div class="well" style="text-align: center;"
+  h1
+    'Trip
+    = @trip.id
+div class="col-lg-4"
+div class="col-lg-4"
+  div class="well well-sm" style="text-align: center;"
+    h4
+      'Duration:
+      = @trip.duration
+      '  minutes
+  div class="well well-sm" style="text-align: center;"
+    h4
+      'Start Date:
+      = @trip.start_date.strftime("%A, %m/%d/%Y")
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'End Date:
+      = @trip.end_date.strftime("%A, %m/%d/%Y")
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'Start Station:
+      = @trip.start_station.name
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'End Station:
+      = @trip.end_station.name
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'Bike Id:
+      = @trip.bike_id
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'Subscription Type:
+      = @trip.subscription_type
+  div  class="well well-sm" style="text-align: center;"
+    h4
+      'Zip Code:
+      = @trip.zip_code
 
   - if current_admin?
     = button_to 'Delete Trip', admin_trip_path(@trip), method: :delete

@@ -1,30 +1,25 @@
-div class="container-fluid"
-  div class="row"
+  div class="card-columns" style="text-align:center; column-count: 4;"
     - @items.each do |item|
-      div class="col-md-3" style="text-align: center;"
-        ul class="item-index-list" style="list-style-type: none;"
-          li style="margin-top: 25px; margin-bottom: 15px;"
-            = link_to item.title, item_path(item.id)
-          li
-            = image_tag("#{item.image}", style: "height: 250px; width: 250px;")
-          li
-            = item.description
-          li
-            '$
-            = '%.2f' % item.price
-          li
-            - if !item.is_retired?
-              = form_for(:item, url: bike_shop_path, method: :patch) do |f|
-                = f.hidden_field(:item_id, value: item.id)
-                = f.hidden_field(:quantity, value: 1)
-                = f.button 'Add to Cart', type: "submit"
-            - else
-              p Item Retired
-          / li
-          /   = form_for(:item, url: bike_shop_path, method: :delete) do |f|
-          /     = f.hidden_field(:item_id, value: item.id)
-          /     = f.submit 'Remove Item From Cart'
-            /   p
-            /     = f.label :quantity, style: 'display:block;align-text:center;'
-            /   p
-            /     = f.number_field :quantity, options = {max: 25, min: 0}
+      div class="card"  
+        div class="card-body"
+          h3 class="card-title" 
+            ul class="item-index-list" style="list-style-type: none;"
+              li
+                = link_to item.title, item_path(item.id)
+              li  
+                = image_tag("#{item.image}", style: "height: 250px; width: 250px;")
+        div class="card-text"
+          ul class="item-index-list" style="list-style-type: none;"
+            li
+              = item.description
+            li
+              '$
+              = '%.2f' % item.price
+            li
+              - if !item.is_retired?
+                = form_for(:item, url: bike_shop_path, method: :patch) do |f|
+                  = f.hidden_field(:item_id, value: item.id)
+                  = f.hidden_field(:quantity, value: 1)
+                  = f.button 'Add to Cart', type: "submit"
+              - else
+                p Item Retired

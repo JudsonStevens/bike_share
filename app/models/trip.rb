@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
   validates :bike_id, presence: true
 
   def self.sort_by_id
-    all.order(:id)
+    all.order(:id).includes(:end_station, :start_station)
   end
 
   def self.average_ride_duration

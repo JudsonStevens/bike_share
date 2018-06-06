@@ -34,10 +34,12 @@ nav class="navbar navbar-default"
       li
         = link_to cart_path do
           - if session[:shopping_cart].values.sum == 0
-            'Shopping Cart - Empty
+            span class="glyphicon glyphicon-shopping-cart"
+              '  Cart - Empty
           -else
-            'Shopping Cart -
-            = session[:shopping_cart].values.sum
+            span class="glyphicon glyphicon-shopping-cart"
+              '  Cart - 
+              = session[:shopping_cart].values.sum
       - if current_user
         li
           = link_to 'Log Out', logout_path, method: :delete
