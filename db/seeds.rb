@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-stations = CSV.open('./db/data/station_fixture.csv', headers: true, header_converters: :symbol)
-stations.each do |station|
+stations_input = CSV.open('./db/data/station_fixture.csv', headers: true, header_converters: :symbol)
+stations_input.each do |station|
   Station.create!(
     id:                 station[:id],
     name:               station[:name],
@@ -18,10 +18,10 @@ stations.each do |station|
   )
 end
 
-ActiveRecord::Base.connection.reset_pk_sequence!(stations)
+ActiveRecord::Base.connection.reset_pk_sequence!("stations")
 
-trips = CSV.open('./db/data/trip_fixture.csv', headers: true, header_converters: :symbol)
-trips.each do |trip|
+trips_input = CSV.open('./db/data/trip_fixture.csv', headers: true, header_converters: :symbol)
+trips_input.each do |trip|
   Trip.create!(
     duration:           trip[:duration],
     start_station_id:   trip[:start_station_id],
