@@ -20,5 +20,8 @@ bundle update
 ```ruby
 rspec
 ```
-5. 
-
+5.  We included the following gems in our project:
+  - [Slim](https://github.com/slim-template/slim)
+  - [Bootstrap](https://github.com/twbs/bootstrap-rubygem)
+  - [Friendly_ID](https://github.com/norman/friendly_id)
+  - [Figaro](https://github.com/laserlemon/figaro)
