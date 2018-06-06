@@ -17,6 +17,9 @@ stations.each do |station|
     installation_date:  Date.strptime(station[:installation_date], "%m/%d/%Y")
   )
 end
+
+ActiveRecord::Base.connection.reset_pk_sequence!(‘stations’)
+
 trips = CSV.open('./db/data/trip_fixture.csv', headers: true, header_converters: :symbol)
 trips.each do |trip|
   Trip.create!(
@@ -50,3 +53,5 @@ Item.create(price: 82.00, image: 'http://i0.kym-cdn.com/entries/icons/original/0
 Item.create(price: 1.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x13', title: 'Bike Limes In Between')
 Item.create(price: 99.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x14', title: 'Bike Limes Yeah')
 Item.create(price: 10.00, image: 'http://i0.kym-cdn.com/entries/icons/original/000/003/980/hold-all-these-limes.jpg', description: 'Too many limes x15', title: 'Bike Limes No')
+
+
