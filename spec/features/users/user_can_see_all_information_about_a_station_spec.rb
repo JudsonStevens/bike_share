@@ -24,13 +24,13 @@ describe 'User' do
       expect(page).to have_content(station1.city)
       expect(page).to have_content(station1.installation_date.strftime("%A, %m/%d/%Y"))
 
-      expect(page).to have_content('Number of Trips Starting at This Station: 2')
-      expect(page).to have_content('Number of Trips Ending at This Station: 4')
-      expect(page).to have_content("Most Frequent Destination Station from Here: #{station2.name}")
-      expect(page).to have_content("Most Frequent Origination Station for Trips to Here: #{station4.name}")
-      expect(page).to have_content("Date With the Highest Number of Starting Trips: #{trip.start_date.strftime("%A, %m/%d/%Y")}")
-      expect(page).to have_content("Most Frequent Zip Codes for Users Starting Trips at this Station: #{trip.zip_code}")
-      expect(page).to have_content("Most Frequent Bike ID Starting Trips Here: #{trip.bike_id}")
+      expect(page).to have_content("Number of Trips Starting at This Station:\n2")
+      expect(page).to have_content("Number of Trips Ending at This Station:\n4")
+      expect(page).to have_content("Most Frequent Destination Station from Here:\n#{station2.name}")
+      expect(page).to have_content("Most Frequent Origination Station for Trips to Here:\n#{station4.name}")
+      expect(page).to have_content("Date With the Highest Number of Starting Trips:\n#{trip.start_date.strftime("%A, %m/%d/%Y")}")
+      expect(page).to have_content("Most Frequent Zip Codes for Users Starting Trips at this Station:\n#{trip.zip_code}")
+      expect(page).to have_content("Most Frequent Bike ID Starting Trips Here:\n#{trip.bike_id}")
     end
   end
 end

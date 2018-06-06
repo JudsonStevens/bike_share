@@ -46,7 +46,7 @@ describe 'Admin' do
       visit admin_dashboard_path(admin)
 
 
-      expect(page).to have_content("Orders:")
+      expect(page).to have_content("Personal Orders")
       expect(page).to have_content("#{order_1.status}")
       expect(page).to have_content("#{order_2.status}")
     end
