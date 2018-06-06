@@ -12,7 +12,7 @@ describe Station, type: :model do
     it { should have_many(:start_stations).class_name("Trip") }
     it { should have_many(:end_stations).class_name("Trip") }
   end
-  
+
   describe 'Instance Methods' do
     it 'can sort by id' do
       station = Station.create(name:'Turing Station', dock_count: 1, city: 'Denver', installation_date:'2018-05-01 01:00:00 UTC')

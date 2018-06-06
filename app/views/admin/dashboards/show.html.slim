@@ -9,6 +9,8 @@ div class="container-fluid" style="margin-left: 25px; margin-right: 25px;"
       ul class="list-group"
         li class="list-group-item text-muted" contenteditable="false"
           'Profile Information
+        li class="list-group-item"
+          = button_to 'Edit Profile Information', edit_user_path(@user), method: :get, class: "btn btn-primary"
         li class="list-group-item text-right"
           span class="pull-left"
             strong Username
@@ -25,6 +27,10 @@ div class="container-fluid" style="margin-left: 25px; margin-right: 25px;"
           span class="pull-left"
             strong Address
           = @user.address
+        li class="list-group-item"
+          = button_to 'View all Accessories', admin_bike_shop_path, method: :get, class: "btn btn-primary"
+          = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary", style: "margin-top: 15px;"
+
     div class="col-sm-3" contenteditable="false"
       div class="panel panel-default"
         div class="panel-heading"
@@ -74,10 +80,6 @@ div class="container-fluid" style="margin-left: 25px; margin-right: 25px;"
               - if order.status == 'paid'
                 = button_to "Cancel", admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit', style: "margin-left: 10px;"
                 = button_to "Mark as Completed", admin_order_path(order, "order[status]" => 'completed'), method: :put, type: 'submit', style: "margin-left: 10px;"
-h2
-  = button_to 'View all Accessories', admin_bike_shop_path, method: :get, class: "btn btn-primary"
-
-  = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary"
 
 / ul
 /   - @personal_orders.each do |order|

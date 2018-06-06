@@ -1,4 +1,7 @@
-h1 Bike Shop
+div class="container" style="text-align: center; margin-bottom: 20px;"
+  h1 Bike Shop
+  = button_to 'Create New Accessory', admin_bike_shop_new_path, method: :get, class: "btn btn-primary", style: "margin-top: 15px;"
+
 table class='table table-bordered'
   thead
     tr
@@ -29,8 +32,8 @@ table class='table table-bordered'
             - else
               'Active
         td
-          = button_to "Edit #{item.title}", edit_admin_item_path(item), method: :get
+          = button_to "Edit #{item.title}", edit_admin_item_path(item), method: :get, class: "btn btn-primary"
           - if item.is_retired? == true
-            = button_to "Reactivate #{item.title}", admin_item_path(item, "item[is_retired?]" => false), method: :put, type: 'submit'
+            = button_to "Reactivate #{item.title}", admin_item_path(item, "item[is_retired?]" => false), method: :put, type: 'submit', class: "btn btn-primary", style: "margin-top: 10px;"
           - else
-            = button_to "Retire #{item.title}", admin_item_path(item, "item[is_retired?]" => true), method: :put, type: 'submit'
+            = button_to "Retire #{item.title}", admin_item_path(item, "item[is_retired?]" => true), method: :put, type: 'submit', class: "btn btn-primary", style: "margin-top: 10px;"

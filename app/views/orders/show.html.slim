@@ -5,14 +5,15 @@
       'Order ID:
       = @order.id
   - if current_admin?
-    h1
-      'Purchaser Name:
-      = @purchaser.first_name
-      '
-      = @purchaser.last_name
-    h1
-      'Purchaser Address:
-      = @purchaser.address
+    div class="well" style="text-align: center;"
+      h1
+        'Purchaser Name:
+        = @purchaser.first_name
+        '
+        = @purchaser.last_name
+      h1
+        'Purchaser Address:
+        = @purchaser.address
 
   div class="container-fluid"
 
