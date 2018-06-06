@@ -18,7 +18,7 @@ stations.each do |station|
   )
 end
 
-ActiveRecord::Base.connection.reset_pk_sequence!(‘stations’)
+ActiveRecord::Base.connection.reset_pk_sequence!(stations)
 
 trips = CSV.open('./db/data/trip_fixture.csv', headers: true, header_converters: :symbol)
 trips.each do |trip|
