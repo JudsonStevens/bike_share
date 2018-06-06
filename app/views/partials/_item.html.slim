@@ -1,5 +1,5 @@
 div class="container-fluid" style="width: 85%;"
-    = form_for [:admin, @item], method: :patch, html: { class: "needs-validation", style: "width: 85%;"} do |f|
+    = form_for [:admin, @item], html: { class: "needs-validation", style: "width: 85%;"} do |f|
       = f.label :title
       = f.text_field :title, class: "form-control", required: true
 
