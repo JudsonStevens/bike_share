@@ -58,6 +58,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem 'ffaker'
   gem 'simplecov'
+  gem "nyan-cat-formatter"
 end
 
 group :development do
